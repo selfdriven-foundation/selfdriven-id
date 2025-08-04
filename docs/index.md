@@ -6,8 +6,8 @@ title: Home
 ## Helping communities self-actuate based on trust & identity.
 
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
-    - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
-    - [skillzeb.io](https://skillzeb.io)
+- [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
+- [skillzeb.io](https://skillzeb.io)
 
 ## Learn
 - [Self-Sovereign Identity (SSI) Book](https://www.manning.com/books/self-sovereign-identity)
