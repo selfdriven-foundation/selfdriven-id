@@ -7,7 +7,6 @@ title: Home
 
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
     - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
-    - [seldriven.id/ssi](/ssi)
     - [skillzeb.io](https://skillzeb.io)
 
 ## Learn
@@ -17,6 +16,7 @@ title: Home
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
+- [seldriven.id/ssi](/ssi)
 - [Hyperledger Identus](https://www.lfdecentralizedtrust.org/projects/identus)
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
