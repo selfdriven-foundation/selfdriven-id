@@ -3,6 +3,8 @@ layout: default
 title: Home
 ---
 
+## Helping communities self-actuate based on trust & identity.
+
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
     - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
     - [seldriven.id/ssi](/ssi)
