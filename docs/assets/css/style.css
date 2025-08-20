@@ -154,3 +154,13 @@ body {
 	top: 1rem;
 	right: 1rem;
 }
+
+table {
+  border: 2px solid #333;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 4px; /* optional, just for spacing */
+}
