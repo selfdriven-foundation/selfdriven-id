@@ -16,7 +16,7 @@ title: Home
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
-- [seldriven.id/ssi](/ssi)
+- [selfdriven.id/ssi](/ssi)
 - [Hyperledger Identus](https://www.lfdecentralizedtrust.org/projects/identus)
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
