@@ -13,8 +13,7 @@ title: Home
 - [Learning Digital Identity Book](https://www.oreilly.com/library/view/learning-digital-identity/9781098117689/)
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
-- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
-- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
+- [SSI & KERI](/ssi-keri/)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
@@ -22,6 +21,8 @@ title: Home
 - [Hyperledger Identus](https://www.lfdecentralizedtrust.org/projects/identus)
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
+- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
+- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 
 ## Related
 - [octology.io](https://octology.io)
