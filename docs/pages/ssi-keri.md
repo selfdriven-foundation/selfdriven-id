@@ -9,8 +9,6 @@ permalink: /ssi/keri/
 KERI is part of the SSI ecosystem, but it isn’t owned by SSI.**  
 It’s a foundational identity and trust layer that SSI systems can use to manage identifiers, keys, and credentials without relying on a blockchain.
 
--
-
 ## What is SSI?
 
 SSI systems generally require:
@@ -31,8 +29,6 @@ Traditional SSI relies on:
 - PKI-based trust  
 - Agents and wallets  
 
----
-
 ## Where KERI Fits
 
 **KERI (Key Event Receipt Infrastructure)** provides a decentralized, portable trust layer for identifier and key management.  
@@ -49,8 +45,6 @@ In SSI terms:
 - KERI is a **DID method** (e.g., `did:keri:...`)  
 - KERI provides the **trust substrate** for credentials  
 - KERI is paired with **ACDC** as its native credential format
-
----
 
 ## Interoperability With SSI Standards
 
@@ -69,7 +63,6 @@ You can use KERI as:
 - a key management and rotation engine  
 - an identity substrate for organizations, devices, or humans  
 
----
 
 ## Mental Model
 
@@ -78,8 +71,6 @@ You can use KERI as:
 - **ACDC:** The verifiable data container layer on top of KERI.
 
 Both are SSI — they just implement the trust layer differently.
-
----
 
 ## Summary
 
@@ -95,9 +86,7 @@ It’s a modern and efficient approach that gives SSI:
 
 KERI = SSI without requiring a blockchain.
 
----
-
-## Overview Diagram
+### Overview Diagram
 
                       +-----------------------------+
                       |        SSI Ecosystem        |
@@ -116,7 +105,7 @@ KERI = SSI without requiring a blockchain.
                           v                      v
 
           +---------------------------------------------------+
-          |        KERI: Key Event Receipt Infrastructure      |
+          |        KERI: Key Event Receipt Infrastructure     |
           |---------------------------------------------------|
           | - Self-certifying identifiers (AIDs)              |
           | - Key events (inception, rotation, delegation)    |
@@ -152,7 +141,8 @@ KERI = SSI without requiring a blockchain.
                   |  Applications & Use   |
                   |       Cases           |
                   +-----------------------+
+
 ---
 
-## Related
 - [SSI, KERI & AI](/ssi/keri/ai/)
+- [SSI, KERI & UTXO](/ssi/keri/utxo/)

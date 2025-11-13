@@ -9,8 +9,6 @@ permalink: /ssi/keri/ai/
 KERI provides the **trust and identity layer**, while SKILL.md provides the **capability and control layer**.  
 Together they let organisations deploy GenAI with verifiable identity, authority, governance, and revocation.
 
----
-
 ## 1. KERI Gives Each AI Agent a Verifiable Identity (AID)
 
 Each AI agent (or model, workflow, or assistant) gets its own **Autonomous Identifier**:
@@ -29,8 +27,6 @@ These AIDs are:
 
 This lets the organisation treat AI agents as **first-class actors** with traceable, secure identities.
 
----
-
 ## 2. KERI Handles Delegation, Roles, and Key Rotation
 
 SKILL.md describes *what* the AI can do.  
@@ -44,8 +40,6 @@ Examples:
 - If a model is compromised → rotate keys → trust intact.
 
 KERI becomes the **identity governance spine**.
-
----
 
 ## 3. ACDCs Authenticate AI Outputs
 
@@ -67,8 +61,6 @@ An ACDC gives:
 
 This converts AI output into **verifiable organisational artifacts**.
 
----
-
 ## 4. SKILL.md Becomes the AI’s Verifiable Capability Contract
 
 SKILL.md defines:
@@ -89,8 +81,6 @@ Combined with KERI:
 
 This provides capability-based control with cryptographic accountability.
 
----
-
 ## 5. Organisations Become Identity Graphs of Humans + AIs
 
 A KERI-backed organisation can structure AI actors like this:
@@ -103,8 +93,6 @@ Each AI agent is:
 - auditable  
 
 This eliminates “anonymous” or “unbounded” AI behaviour.
-
----
 
 ## 6. Benefits
 
@@ -126,7 +114,6 @@ Multiple AI vendors can participate in the same trust fabric.
 ### **Scalability**
 You can safely grow from 1 to 100+ AI agents.
 
----
 
 ## Summary
 
@@ -141,7 +128,5 @@ Together they enable:
 - key rotation and revocation  
 - authenticated AI outputs (ACDC)  
 - accountable AI operations inside organisations  
-
-In short:
 
 **A trusted, governed, and auditable AI workforce for the organisation.**
