@@ -14,6 +14,7 @@ title: Home
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
 - [SSI & KERI](/ssi/keri/)
+- [GLEIF](https://www.gleif.org)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
