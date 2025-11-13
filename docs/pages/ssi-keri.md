@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SSI & KERI | selfdrivenID
-permalink: /ssi-keri/
+permalink: /ssi/keri/
 ---
 
 # SSI & KERI
