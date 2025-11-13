@@ -17,4 +17,4 @@ permalink: /ssi/
 
 ## Related
 
-- [KERI & SSI](/ssi-keri)
+- [KERI & SSI](/ssi/keri)
