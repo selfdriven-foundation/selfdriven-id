@@ -152,3 +152,7 @@ KERI = SSI without requiring a blockchain.
                   |  Applications & Use   |
                   |       Cases           |
                   +-----------------------+
+---
+
+## Related
+- [SSI, KERI & AI](/ssi/keri/ai/)
