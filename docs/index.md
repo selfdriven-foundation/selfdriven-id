@@ -7,7 +7,6 @@ title: Home
 
 - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
-- [skillzeb.io](https://skillzeb.io)
 
 ## Learn
 - [Self-Sovereign Identity (SSI) Book](https://www.manning.com/books/self-sovereign-identity)
@@ -24,3 +23,6 @@ title: Home
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
 
+## Related
+- [octology.io](https://octology.io)
+- [skillzeb.io](https://skillzeb.io)
