@@ -4,7 +4,7 @@ title: SSI & KERI | selfdrivenID
 permalink: /ssi-keri/
 ---
 
-# KERI & SSI
+# SSI & KERI
 
 KERI is part of the SSI ecosystem, but it isn’t owned by SSI.**  
 It’s a foundational identity and trust layer that SSI systems can use to manage identifiers, keys, and credentials without relying on a blockchain.
