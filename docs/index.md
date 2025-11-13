@@ -13,7 +13,7 @@ title: Home
 - [Learning Digital Identity Book](https://www.oreilly.com/library/view/learning-digital-identity/9781098117689/)
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
-- [SSI & KERI](/ssi-keri/)
+- [SSI & KERI](/ssi/keri/)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
