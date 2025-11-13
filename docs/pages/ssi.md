@@ -4,7 +4,7 @@ title: SSI | selfdrivenID
 permalink: /ssi/
 ---
 
-# SSI Methods
+## SSI Methods
 
 | **Name Format** | **Description** |
 |:-----------------|:-----------------|
@@ -14,3 +14,7 @@ permalink: /ssi/
 | did:selfdriven:sdi:anon:[SDI\|hash-sha256] | The SHA256 hashed selfdriven SDI assigned to each community member |
 | did:selfdriven:cardano:[bip32-address] | Uses the [Cardano](https://selfdriven.fyi/on-chain) key/hash/addressing based on BIP32-Ed25519 |
 | did:selfdriven:webauthn:[webauthn-passkey-publickey] | Uses the WebAuthN ES256 (ECDSA w/ P-256 and SHA-256) |
+
+## Related
+
+- [KERI & SSI](/ssi-keri)
