@@ -23,6 +23,7 @@ title: Home
 - [FIDO2](https://fidoalliance.org/fido2)
 - [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
 - [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
+- [veridian.id](https://www.veridian.id)
 
 ## Related
 - [octology.io](https://octology.io)
