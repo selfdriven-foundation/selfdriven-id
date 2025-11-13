@@ -14,6 +14,8 @@ title: Home
 - [Learning Digital Identity Book](https://www.oreilly.com/library/view/learning-digital-identity/9781098117689/)
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
+- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
+- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
