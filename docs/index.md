@@ -16,6 +16,9 @@ title: Home
 - [SSI & KERI](/ssi/keri/)
 - [GLEIF](https://www.gleif.org)
 
+## Research
+- [Digital Trust Infrastructure Paper, Cardano Foundation & BRI](https://cardanofoundation.org/digital-trust-infrastructure-report.pdf)
+
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
 - [selfdriven.id/ssi](/ssi)
