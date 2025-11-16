@@ -32,7 +32,7 @@ title: Home
 ## Organisations
 - [KERI Foundation](https://keri.foundation/)
 - [Trust Over IP](https://trustoverip.org)
-- [Decentralised Identity Foundation](Decentralized Identity Foundation)
+- [Decentralised Identity Foundation](https://identity.foundation/)
 
 ## Related
 - [octology.io](https://octology.io)
