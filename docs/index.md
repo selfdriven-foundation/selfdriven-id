@@ -29,6 +29,11 @@ title: Home
 - [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 - [veridian.id](https://www.veridian.id)
 
+## Organisations
+- [KERI Foundation](https://keri.foundation/)
+- [Trust Over IP](https://trustoverip.org)
+- [Decentralised Identity Foundation](Decentralized Identity Foundation)
+
 ## Related
 - [octology.io](https://octology.io)
 - [skillzeb.io](https://skillzeb.io)
