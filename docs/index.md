@@ -28,6 +28,7 @@ title: Home
 - [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
 - [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 - [veridian.id](https://www.veridian.id)
+- [Signify](https://github.com/WebOfTrust/signify-browser-extension)
 
 ## Protocols
 - [xxx](https://trustoverip.github.io/tswg-trust-registry-protocol/)
