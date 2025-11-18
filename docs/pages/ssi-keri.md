@@ -146,3 +146,4 @@ KERI = SSI without requiring a blockchain.
 
 - [SSI, KERI & AI](/ssi/keri/ai/)
 - [SSI, KERI & UTXO](/ssi/keri/utxo/) - Conceptual Relationship
+- [SSI, KERI & Midnight Network](/ssi/keri/midnight-network/) - Conceptual Comparison
