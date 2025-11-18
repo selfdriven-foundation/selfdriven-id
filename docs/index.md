@@ -29,6 +29,9 @@ title: Home
 - [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 - [veridian.id](https://www.veridian.id)
 
+## Protocols
+- [xxx](https://trustoverip.github.io/tswg-trust-registry-protocol/)
+
 ## Organisations
 - [KERI Foundation](https://keri.foundation/)
 - [Trust Over IP](https://trustoverip.org)
