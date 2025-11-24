@@ -31,10 +31,10 @@ title: Home
 - [Signify](https://github.com/WebOfTrust/signify-browser-extension)
 
 ## Protocols
-- [xxx](https://trustoverip.github.io/tswg-trust-registry-protocol/)
+- [Trust Registry Protocol](https://trustoverip.github.io/tswg-trust-registry-protocol/)
 
 ## Organisations
-- [KERI Foundation](https://keri.foundation/)
+- [KERI Foundation](https://keri.foundation/) - selfdriven is a member.
 - [Trust Over IP](https://trustoverip.org)
 - [Decentralised Identity Foundation](https://identity.foundation/)
 
