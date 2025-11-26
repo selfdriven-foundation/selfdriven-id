@@ -1,0 +1,12 @@
+{
+  "name": "keri-cardano-key-mgmt",
+  "version": "0.1.0",
+  "description": "Example: manage a Cardano Ed25519 key as an operational key under a KERI-style identity log.",
+  "main": "src/demo.js",
+  "scripts": {
+    "start": "node src/demo.js"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  }
+}
