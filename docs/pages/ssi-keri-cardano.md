@@ -112,18 +112,16 @@ Off-chain: KERI manages who is authorized to control that key, when, and why.
 
 The benefits appear in governance, recovery, delegation, and auditability, not in Cardano transaction format.
 
----
+**Why this matters for production systems**
 
-Why this matters for production systems
-
-Scenario	KERI advantage
-Wallet key compromised	Rotate + revoke without losing identity
-Moving to hardware wallet	Rotation event preserves authorship continuity
-Multi-party organization wallet	Threshold governance (e.g., 3-of-5)
-AI / bot wallet	Keys delegated & recoverable without deleting identity
-Compliance / audit	Immutable proof of identity control timeline
-
-
+KERI advantage:
+- Wallet key compromised	Rotate + revoke without losing identity
+- Moving to hardware wallet
+- Rotation event preserves authorship continuity
+- Multi-party organization wallet
+- Threshold governance (e.g., 3-of-5)
+- AI / bot wallet	Keys delegated & recoverable without deleting identity
+- Compliance / audit	Immutable proof of identity control timeline
 
 ---
 
