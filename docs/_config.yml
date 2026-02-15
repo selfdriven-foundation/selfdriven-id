@@ -12,4 +12,4 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 exclude:
-  - /skills 
+  - /_wellknown
