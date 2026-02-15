@@ -29,10 +29,10 @@ title: Home
 - [FIDO2](https://fidoalliance.org/fido2)
 - **KERI**
 	- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
+	- [did:keri](https://identity.foundation/keri/did_methods)
 	- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 	- [did:webs method (github)](https://github.com/WebOfTrust/did-keri)
-	- [did:keri](https://identity.foundation/keri/did_methods)
-- [veridian.id](https://www.veridian.id)
+- [veridian.id](https://www.veridian.id) - Cardano Foundation
 - [Signify](https://github.com/WebOfTrust/signify-browser-extension)
 
 ## Protocols
