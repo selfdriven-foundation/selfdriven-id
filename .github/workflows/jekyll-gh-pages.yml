@@ -38,8 +38,8 @@ jobs:
       - name: Publish agent endpoints
         run: |
           mkdir -p ./_site/.well-known
-          if [ -d "./docs/_wellknown" ]; then
-            cp -r ./docs/_wellknown/* ./_site/.well-known/
+          if [ -d "./docs/_well-known" ]; then
+            cp -r ./docs/_well-known/* ./_site/.well-known/
           fi
 
       - uses: actions/upload-pages-artifact@v3
