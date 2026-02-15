@@ -46,3 +46,10 @@ title: Home
 ## Related
 - [octology.io](https://octology.io)
 - [skillzeb.io](https://skillzeb.io)
+
+---
+
+*For all entity-substrates (organic/inorganic)*
+*Without a shared-identification-system, you can't have shareable-identity.*
+*Without shareable-identites, you can't have shared-trust.*
+
