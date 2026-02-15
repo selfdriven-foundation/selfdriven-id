@@ -14,7 +14,8 @@ title: Home
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
 - [SSI & KERI](/ssi/keri/)
-- [GLEIF](https://www.gleif.org)
+- [GLEIF](https://www.gleif.org) - Global Legal Entity Identifier Foundation
+- [vLEI](hhttps://vlei.com) - Verifiable Legal Entity Identifier
 
 ## Research
 - [Digital Trust Infrastructure Paper, Cardano Foundation & BRI](https://cardanofoundation.org/digital-trust-infrastructure-report.pdf)
@@ -26,8 +27,11 @@ title: Home
 - [Hyperledger Identus](https://www.lfdecentralizedtrust.org/projects/identus)
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
-- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
-- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
+- KERI
+	- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
+	- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
+	- [did:webs method (github)](https://github.com/WebOfTrust/did-keri)
+	- [did:keri](https://identity.foundation/keri/did_methods)
 - [veridian.id](https://www.veridian.id)
 - [Signify](https://github.com/WebOfTrust/signify-browser-extension)
 
