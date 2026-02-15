@@ -27,7 +27,7 @@ title: Home
 - [Hyperledger Identus](https://www.lfdecentralizedtrust.org/projects/identus)
 - [MOSIP](https://www.mosip.io)
 - [FIDO2](https://fidoalliance.org/fido2)
-- KERI
+- **KERI**
 	- [KERI Spec](https://github.com/trustoverip/kswg-keri-specification)
 	- [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/)
 	- [did:webs method (github)](https://github.com/WebOfTrust/did-keri)
