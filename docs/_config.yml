@@ -1,0 +1,15 @@
+title: "selfdriven ID"
+description: "selfdriven ID"
+baseurl: ""
+url: ""
+defaults:
+  - scope:
+      path: "pages"
+      type: "pages"
+    values:
+      layout: default
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - /skills 
