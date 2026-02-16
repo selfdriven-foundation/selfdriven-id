@@ -49,7 +49,7 @@ title: Home
 
 ---
 
-*For all entity-substrates (organic/inorganic)*
-*Without a shared-identification-system, you can't have shareable-identity.*
-*Without shareable-identites, you can't have shared-trust.*
+- *For all entity-substrates (organic/inorganic).*
+- *Without a shared-identification-system, you can't have shareable-identity.*
+- *Without shareable-identites, you can't have shared-trust.*
 
