@@ -1,9 +1,16 @@
+---
+layout: null
+title:  Digital Interaction Framework | selfdriven ID
+permalink: /framework/digital-interaction
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>selfdriven — Digital Interaction Framework</title>
+<link rel="shortcut icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png">
+	<link rel="apple-touch-icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png" />
+<title>Digital Interaction Framework - selfdriven.id</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -51,8 +58,9 @@ body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--t
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: transparent; transition: all 0.4s ease; }
 nav.scrolled { background: rgba(245,242,237,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
 @media (prefers-color-scheme: dark) { nav.scrolled { background: rgba(10,10,10,0.88); } }
-.nav-brand { font-weight: 800; font-size: 18px; letter-spacing: -0.03em; color: var(--accent); }
-.nav-brand span { color: var(--text); font-weight: 500; }
+.nav-brand { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
+.nav-brand img { height: 30px; display: block; transition: opacity 0.3s; }
+.nav-brand:hover img { opacity: 0.85; }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.25s; position: relative; }
 .nav-links a:hover { color: var(--accent); }
@@ -230,7 +238,7 @@ footer { text-align: center; padding: 60px 40px 40px; border-top: 1px solid var(
 <body>
 
 <nav id="nav">
-  <div class="nav-brand">selfdriven<span>.foundation</span></div>
+  <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="nav-brand"><img src="data:image/png;base64,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" alt="selfdriven" style="height: 30px; display: block;" /></a>
   <div class="nav-links">
     <a href="javascript:void(0)" data-target="layers">Trust Layers</a>
     <a href="javascript:void(0)" data-target="lifecycle">Lifecycle</a>
