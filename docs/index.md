@@ -20,6 +20,7 @@ title: selfdriven ID
 ## Research
 - [Digital Trust Infrastructure Paper, Cardano Foundation & BRI](https://cardanofoundation.org/digital-trust-infrastructure-report.pdf)
 - [Identity primitives for human-rooted agency in Octomics](/research/id-primitives-for-human-rooted-agency)
+- [Digital Interaction Framework](/framework/digital-interaction)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
