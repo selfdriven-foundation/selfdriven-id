@@ -3,7 +3,7 @@ layout: selfdriven
 title: selfdriven ID
 ---
 
-## Helping communities self-actuate based on trustable identification and associated identities.
+# Helping communities self-actuate based on trustable identification and associated identities.
 
 - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
