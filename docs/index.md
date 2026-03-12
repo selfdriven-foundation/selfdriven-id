@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Home
+layout: selfdriven
+title: selfdriven ID
 ---
 
 ## Helping communities self-actuate based on trustable identification and associated identities.

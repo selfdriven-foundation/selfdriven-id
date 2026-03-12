@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: selfdriven
 title: SSI, KERI & UTXO | selfdrivenID
 permalink: /ssi/keri/utxo/
 ---

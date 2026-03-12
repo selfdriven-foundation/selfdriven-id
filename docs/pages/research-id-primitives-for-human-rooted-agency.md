@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: selfdriven
 title: Identity primitives for human-rooted agency in Octomics | selfdriven ID
 permalink: /research/id-primitives-for-human-rooted-agency
 ---

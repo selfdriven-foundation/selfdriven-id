@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: selfdriven
 title: SSI, KERI & AI | selfdrivenID
 permalink: /ssi/keri/ai/
 ---

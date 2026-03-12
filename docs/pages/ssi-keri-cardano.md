@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: selfdriven
 title: SSI, KERI & Cardano | selfdrivenID
 permalink: /ssi/keri/cardano/
 ---

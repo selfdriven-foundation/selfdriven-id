@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: selfdriven
 title: SSI, KERI & Midnight Network | selfdrivenID
 permalink: /ssi/keri/midnight-network/
 ---
