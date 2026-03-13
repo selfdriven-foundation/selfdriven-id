@@ -1,5 +1,5 @@
 ---
-name: selfdriven-interactive-info-site
+name: selfdriven-interactive-info-site-build
 description: "Build selfdriven-branded interactive info websites from conceptual sketches, notebook photos, or framework descriptions. Use when the user wants to turn notes, sketches, diagrams, or conceptual frameworks into a polished single-file HTML interactive site with the selfdriven brand system — especially for KERI/ACDC trust architecture, digital interaction frameworks, or any selfdriven knowledge base content."
 ---
 
