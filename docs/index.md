@@ -8,6 +8,9 @@ title: selfdriven ID
 - [selfdriven.fyi/identity](https://selfdriven.fyi/identity)
 - [selfdriven.fyi/trust](https://selfdriven.fyi/trust)
 
+## Frameworks
+- [Digital Interaction Framework](/framework/digital-interaction)
+
 ## Learn
 - [Self-Sovereign Identity (SSI) Book](https://www.manning.com/books/self-sovereign-identity)
 - [Learning Digital Identity Book](https://www.oreilly.com/library/view/learning-digital-identity/9781098117689/)
@@ -20,7 +23,6 @@ title: selfdriven ID
 ## Research
 - [Digital Trust Infrastructure Paper, Cardano Foundation & BRI](https://cardanofoundation.org/digital-trust-infrastructure-report.pdf)
 - [Identity primitives for human-rooted agency in Octomics](/research/id-primitives-for-human-rooted-agency)
-- [Digital Interaction Framework](/framework/digital-interaction)
 
 ## Tech
 - [selfdriven.network](https://selfdriven.network) - SSI Interface
