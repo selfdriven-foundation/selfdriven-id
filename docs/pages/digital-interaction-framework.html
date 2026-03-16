@@ -1,9 +1,16 @@
+---
+layout: null
+title: Digital Interaction Framework - selfdriven ID
+permalink: /framework/digital-interaction
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Interaction Framework - selfdriven</title>
+ <link rel="shortcut icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png">
+ <link rel="apple-touch-icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png" />
+<title>Digital Interaction Framework - selfdriven.id</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -51,8 +58,9 @@ body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--t
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: transparent; transition: all 0.4s ease; }
 nav.scrolled { background: rgba(245,242,237,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
 @media (prefers-color-scheme: dark) { nav.scrolled { background: rgba(10,10,10,0.88); } }
-.nav-brand { font-weight: 800; font-size: 18px; letter-spacing: -0.03em; color: var(--accent); }
-.nav-brand span { color: var(--text); font-weight: 500; }
+.nav-brand { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
+.nav-brand img { height: 30px; display: block; transition: opacity 0.3s; }
+.nav-brand:hover img { opacity: 0.85; }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.25s; position: relative; }
 .nav-links a:hover { color: var(--accent); }
@@ -208,7 +216,9 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
 .tech-sidebar { display: flex; gap: 40px; margin-top: 32px; }
 .tech-concepts { width: 200px; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px; }
 .tech-tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; padding: 8px 14px; border-radius: 10px; background: var(--accent-dim); color: var(--accent); cursor: pointer; transition: all 0.25s; border: 1px solid transparent; }
-.tech-tag:hover { background: var(--accent-strong); border-color: var(--accent); transform: translateX(4px); }
+.tech-tag:hover, .tech-tag.active { background: var(--accent-strong); border-color: var(--accent); transform: translateX(4px); }
+.tech-detail { display: none; }
+.tech-detail.active { display: block; }
 .balance-bar { display: flex; align-items: center; gap: 16px; margin: 32px 0; padding: 20px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
 .balance-label { font-size: 13px; font-weight: 600; white-space: nowrap; }
 .balance-track { flex: 1; height: 8px; background: var(--surface2); border-radius: 99px; position: relative; overflow: hidden; }
@@ -228,7 +238,7 @@ footer { text-align: center; padding: 60px 40px 40px; border-top: 1px solid var(
 <body>
 
 <nav id="nav">
-  <div class="nav-brand">selfdriven<span>.foundation</span></div>
+  <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="nav-brand"><img src="data:image/png;base64,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" alt="selfdriven" style="height: 30px; display: block;" /></a>
   <div class="nav-links">
     <a href="javascript:void(0)" data-target="layers">Trust Layers</a>
     <a href="javascript:void(0)" data-target="lifecycle">Lifecycle</a>
@@ -311,14 +321,71 @@ footer { text-align: center; padding: 60px 40px 40px; border-top: 1px solid var(
         <div class="layer-panel">
           <div class="tech-sidebar">
             <div class="tech-concepts">
-              <div class="tech-tag">AuthN / AuthZ</div><div class="tech-tag">Protocols</div><div class="tech-tag">Encryption</div><div class="tech-tag">Cryptology</div><div class="tech-tag">Privacy</div><div class="tech-tag">Path History</div><div class="tech-tag">Key Mgmt</div><div class="tech-tag">Witness Net</div>
+              <div class="tech-tag active" data-tech="authn">AuthN / AuthZ</div>
+              <div class="tech-tag" data-tech="protocols">Protocols</div>
+              <div class="tech-tag" data-tech="encryption">Encryption</div>
+              <div class="tech-tag" data-tech="cryptology">Cryptology</div>
+              <div class="tech-tag" data-tech="privacy">Privacy</div>
+              <div class="tech-tag" data-tech="pathhistory">Path History</div>
+              <div class="tech-tag" data-tech="keymgmt">Key Mgmt</div>
+              <div class="tech-tag" data-tech="witness">Witness Net</div>
             </div>
             <div class="tech-main">
-              <div class="panel-grid">
-                <div class="panel-card"><div class="panel-card-title">KERI Infrastructure <span class="tag">Core</span></div><div class="panel-card-text">Self-certifying identifiers via <code>AID</code>. Key Event Logs provide append-only, tamper-evident trust roots. Pre-rotation via <code>rot</code> enables instant key recovery.</div></div>
-                <div class="panel-card"><div class="panel-card-title">WebAuthn / Passkeys</div><div class="panel-card-text">FIDO2 biometric authentication bound to KERI AIDs via <code>ixn</code> events. No passwords, no SMS OTP. Device-native security with cross-platform roaming.</div></div>
-                <div class="panel-card"><div class="panel-card-title">ACDC Credentials <span class="tag tag-green">VC</span></div><div class="panel-card-text">Authentic Chained Data Containers for verifiable claims. Anchored to KERI, tracked via <code>TEL</code>, chained for graduated disclosure.</div></div>
-                <div class="panel-card"><div class="panel-card-title">Path History <span class="tag tag-amber">Audit</span></div><div class="panel-card-text">Complete traversal record of an identifier. Every authentication, credential presentation, and interaction logged as verifiable KEL events.</div></div>
+              <div class="tech-detail active" data-tech-panel="authn">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">WebAuthn / Passkeys <span class="tag">FIDO2</span></div><div class="panel-card-text">FIDO2 biometric authentication bound to KERI AIDs via <code>ixn</code> events. No passwords, no SMS OTP. Device-native security with cross-platform credential roaming and attestation.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">KERI-Bound AuthZ <span class="tag tag-green">Scope</span></div><div class="panel-card-text">Authorisation derived from ACDC credentials, not role tables. Each credential encodes a scope — the set of actions a holder may perform within a bounded context.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Passkey ↔ AID Binding</div><div class="panel-card-text">The WebAuthn credential public key is anchored to the KERI AID via an <code>ixn</code> event. This creates a cryptographic link between device biometrics and the self-certifying identifier.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="protocols">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">KERI Event Protocol <span class="tag">Core</span></div><div class="panel-card-text">Five event types form the protocol backbone: <code>icp</code> (inception), <code>rot</code> (rotation), <code>ixn</code> (interaction), <code>dip</code> (delegated inception), <code>drt</code> (delegated rotation).</div></div>
+                  <div class="panel-card"><div class="panel-card-title">OOBI Discovery</div><div class="panel-card-text">Out-of-Band Introductions bootstrap trust between unknown parties. OOBIs provide endpoint URLs for resolving an AID's Key Event Log from its witnesses.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">A2A Agent Protocol</div><div class="panel-card-text">Agent-to-Agent communication protocol enabling autonomous agents to discover, authenticate, and transact with each other using KERI-signed messages.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="encryption">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">At Rest <span class="tag">AES-256-GCM</span></div><div class="panel-card-text">All persistent data encrypted with AES-256-GCM. Key material derived via HKDF-SHA512 from KERI key hierarchy. Authenticated encryption prevents tampering.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">In Transit <span class="tag tag-green">TLS 1.3</span></div><div class="panel-card-text">All network communication over TLS 1.3 with forward secrecy. Certificate pinning for witness and watcher connections. No fallback to legacy protocols.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">End-to-End</div><div class="panel-card-text">Agent-to-agent messages encrypted using X25519 key agreement derived from KERI public keys. Only the intended recipient AID can decrypt the payload.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="cryptology">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">Signing: Ed25519 <span class="tag">Core</span></div><div class="panel-card-text">All KERI events and ACDC credentials signed with Ed25519. Fast, deterministic, and resistant to side-channel attacks. 128-bit security level.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Key Exchange: X25519</div><div class="panel-card-text">Elliptic curve Diffie-Hellman for establishing shared secrets. Used for encrypted agent communication and credential exchange channels.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Hashing: SHA-256 / SHA-512</div><div class="panel-card-text"><code>SHA-256</code> for event digests and content addressing. <code>SHA-512</code> for HKDF key derivation. Collision resistance underpins the integrity of the entire event log.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="privacy">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">Graduated Disclosure <span class="tag">ACDC</span></div><div class="panel-card-text">Credentials reveal only the attributes required for the specific interaction. A holder can prove membership without revealing identity, or prove age without revealing birthdate.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Selective Correlation</div><div class="panel-card-text">The holder controls which interactions can be correlated. Different presentations can use different credential derivations, preventing unwanted cross-context tracking.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Data Minimisation</div><div class="panel-card-text">Only the minimum data required for the interaction is shared. Privacy by design is enforced at the protocol level, not just policy level.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="pathhistory">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">Path History <span class="tag tag-amber">Audit</span></div><div class="panel-card-text">Complete traversal record of an identifier through the system. Every authentication, credential presentation, and interaction logged as verifiable KEL events.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Interaction Sequence</div><div class="panel-card-text">The <code>ixn</code> event sequence number creates an ordered, tamper-evident log of all operations performed by an AID. Gaps in sequence are immediately detectable.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Forensic Replay</div><div class="panel-card-text">Any point in an AID's history can be reconstructed by replaying KEL events from inception. This enables post-incident analysis and compliance auditing.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="keymgmt">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">Pre-Rotation <span class="tag">Core</span></div><div class="panel-card-text">Next rotation keys committed at inception. No authority dependency for recovery. The pre-committed digest ensures only the legitimate holder can rotate.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">HSM Integration</div><div class="panel-card-text">Foundation-level and high-value AIDs store signing keys in Hardware Security Modules. Keys never leave the HSM boundary — signing operations happen on-device.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Multi-Sig Thresholds</div><div class="panel-card-text">Group AIDs can require M-of-N signatures for key events. Enables organisational key management where no single person controls the identity.</div></div>
+                </div>
+              </div>
+              <div class="tech-detail" data-tech-panel="witness">
+                <div class="panel-grid">
+                  <div class="panel-card"><div class="panel-card-title">Witness Network <span class="tag">2-of-3</span></div><div class="panel-card-text">Default configuration: 3 witnesses with 2-of-3 confirmation threshold. Witnesses receipt key events and provide availability guarantees for the KEL.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Geographic Distribution</div><div class="panel-card-text">Witnesses deployed across 2+ availability zones. Protects against regional outages and ensures event confirmation even during infrastructure failures.</div></div>
+                  <div class="panel-card"><div class="panel-card-title">Watcher Nodes</div><div class="panel-card-text">Watchers monitor KELs for inconsistencies and duplicity. They provide an independent verification layer — if a controller publishes conflicting events, watchers detect it.</div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -474,15 +541,14 @@ footer { text-align: center; padding: 60px 40px 40px; border-top: 1px solid var(
     <h2 class="section-title">Network of Agent Selves</h2>
     <p class="section-desc">Tiered identity architecture connecting individual AIDs to organisational networks — from direct relationships to shared attribute communities and infrastructure dependables.</p>
 
-    <div class="network-visual">
-      <div class="network-grid">
-        <div class="node"><div class="node-ring">R1</div><div class="node-label">Tier 1 — Direct</div><div class="node-sub">1:1 verified relationships with full bilateral credential exchange and mutual KEL witnessing</div></div>
-        <div class="node center-node"><div class="node-ring">AID</div><div class="node-label">Agent Self</div><div class="node-sub">Autonomous identifier with self-certifying keys and delegated authority scope</div></div>
-        <div class="node"><div class="node-ring">R2</div><div class="node-label">Tier 2 — Shared</div><div class="node-sub">Community membership via shared attribute attestations and group credential schemas</div></div>
-        <div class="node"><div class="node-ring">N</div><div class="node-label">Network of Selves</div><div class="node-sub">Interconnected web of agent AIDs with transitive trust paths and cross-network discovery</div></div>
-        <div class="node"><div class="node-ring">T</div><div class="node-label">Teammate</div><div class="node-sub">Human Conductor paired with AI agent under delegated KERI AID — the operational unit</div></div>
-        <div class="node"><div class="node-ring">D</div><div class="node-label">Dependable</div><div class="node-sub">Infrastructure witnesses, validators, and always-on service agents with high availability SLAs</div></div>
-      </div>
+    <div class="network-visual" style="padding: 0; overflow: hidden; background: transparent; border: 1px solid rgba(255,255,255,0.08);">
+      <canvas id="networkCanvas" style="width: 100%; height: 420px; display: block; cursor: crosshair;"></canvas>
+    </div>
+    <div style="display: flex; gap: 28px; flex-wrap: wrap; margin-top: 16px; padding: 0 8px;">
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: inline-block;"></span><span style="font-size: 12px; color: var(--muted);">Primary AID (You)</span></div>
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #2d8a4e; display: inline-block;"></span><span style="font-size: 12px; color: var(--muted);">Tier 1 — Direct Relationship</span></div>
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #4a7fb5; display: inline-block;"></span><span style="font-size: 12px; color: var(--muted);">Tier 2 — Shared Attestation</span></div>
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #9e9085; display: inline-block;"></span><span style="font-size: 12px; color: var(--muted);">Teammate / Delegated</span></div>
     </div>
 
     <div class="subsection" style="margin-top: 56px;">
@@ -641,10 +707,26 @@ footer { text-align: center; padding: 60px 40px 40px; border-top: 1px solid var(
 </section>
 
 <footer>
-  <div class="footer-brand">selfdriven.foundation</div>
+  <!-- Podcast Player -->
+  <div style="max-width: 640px; margin: 0 auto 40px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 24px 28px; border-top: 3px solid var(--accent);">
+    <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;">Podcast</div>
+    <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Replacing Big Tech with Cryptographic Trust</div>
+    <div style="font-size: 12px; color: var(--muted); margin-bottom: 16px;">selfdriven ID Research — exploring how KERI/ACDC infrastructure enables self-sovereign digital relationships.</div>
+    <audio controls preload="none" style="width: 100%; height: 40px; border-radius: 8px;">
+      <source src="/assets/audio/selfdriven-id-research-replacing-big-tech-with-cryptographic-trust.m4a" type="audio/mp4">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
   <div class="footer-text">Digital Interaction Framework — Trust Architecture for Self-Sovereign Relationships</div>
   <div class="footer-links">
-    <a href="#">selfdriven.money</a><a href="#">selfdriven.pro</a><a href="#">selfdriven.network</a><a href="#">selfdriven.ai</a><a href="#">selfdriven.bot</a><a href="#">selfdriven.insure</a>
+    <a href="https://selfdriven.foundation" target="_blank">selfdriven.foundation</a>
+    <a href="https://selfdriven.money" target="_blank">selfdriven.money</a>
+    <a href="https://selfdriven.pro" target="_blank">selfdriven.pro</a>
+    <a href="https://selfdriven.network" target="_blank">selfdriven.network</a>
+    <a href="https://selfdriven.ai" target="_blank">selfdriven.ai</a>
+    <a href="https://selfdriven.bot" target="_blank">selfdriven.bot</a>
+    <a href="https://selfdriven.insure" target="_blank">selfdriven.insure</a>
   </div>
 </footer>
 
@@ -672,10 +754,24 @@ window.addEventListener('scroll', () => {
 });
 
 document.querySelectorAll('.layer').forEach(layer => {
-  layer.addEventListener('click', () => {
+  layer.addEventListener('click', (e) => {
+    if (e.target.closest('.layer-panel')) return;
     const w = layer.classList.contains('active');
     document.querySelectorAll('.layer').forEach(l => l.classList.remove('active'));
     if (!w) layer.classList.add('active');
+  });
+});
+
+// Tech tag switching
+document.querySelectorAll('.tech-tag[data-tech]').forEach(tag => {
+  tag.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const key = tag.dataset.tech;
+    document.querySelectorAll('.tech-tag').forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+    document.querySelectorAll('.tech-detail').forEach(d => d.classList.remove('active'));
+    const panel = document.querySelector('[data-tech-panel="' + key + '"]');
+    if (panel) panel.classList.add('active');
   });
 });
 
@@ -729,6 +825,139 @@ const bObs = new IntersectionObserver(e => e.forEach(en => { if (en.isIntersecti
 const bb = document.querySelector('.balance-bar'); if (bb) bObs.observe(bb);
 
 setTimeout(() => document.querySelector('.layer[data-layer="interaction"]')?.classList.add('active'), 1200);
+
+// ── Network Canvas Animation ──
+function initNetwork() {
+  const canvas = document.getElementById('networkCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#c8442f';
+
+  const nodes = [
+    { x: 0.50, y: 0.45, r: 22, color: accent, label: 'You', tier: 0 },
+    { x: 0.28, y: 0.30, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.72, y: 0.25, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.35, y: 0.70, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.68, y: 0.65, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.15, y: 0.55, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.12, y: 0.18, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.40, y: 0.14, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.85, y: 0.38, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.88, y: 0.70, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.22, y: 0.85, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.55, y: 0.82, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
+    { x: 0.05, y: 0.40, r: 7, color: '#9e9085', label: '', tier: 3 },
+    { x: 0.92, y: 0.20, r: 7, color: '#9e9085', label: '', tier: 3 },
+    { x: 0.78, y: 0.85, r: 7, color: '#9e9085', label: '', tier: 3 },
+  ];
+
+  const edges = [
+    [0,1],[0,2],[0,3],[0,4],[0,5],
+    [1,6],[1,7],[2,7],[2,8],[3,10],[4,9],[4,11],[5,12],
+    [6,12],[8,13],[9,14],[3,5],[1,3],
+  ];
+
+  let time = 0;
+  let mouse = { x: -100, y: -100 };
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  canvas.addEventListener('mouseleave', () => { mouse.x = -100; mouse.y = -100; });
+
+  function draw() {
+    const w = canvas.width / dpr;
+    const h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+    time += 0.005;
+
+    // Edges
+    edges.forEach(([a, b]) => {
+      const na = nodes[a], nb = nodes[b];
+      const ax = na.x * w, ay = na.y * h;
+      const bx = nb.x * w, by = nb.y * h;
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(bx, by);
+      ctx.strokeStyle = 'rgba(200,68,47,0.12)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Animated packet
+      const t = (Math.sin(time * 2 + a + b) + 1) / 2;
+      const px = ax + (bx - ax) * t;
+      const py = ay + (by - ay) * t;
+      ctx.beginPath();
+      ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(200,68,47,0.35)';
+      ctx.fill();
+    });
+
+    // Nodes
+    nodes.forEach((n, i) => {
+      const nx = n.x * w;
+      const ny = n.y * h;
+      const wobble = Math.sin(time * 1.5 + i) * 3;
+
+      const dx = mouse.x - nx;
+      const dy = mouse.y - ny;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const hover = dist < 40;
+
+      // Glow
+      if (hover || n.tier === 0) {
+        ctx.beginPath();
+        ctx.arc(nx, ny + wobble, n.r + 10, 0, Math.PI * 2);
+        const grad = ctx.createRadialGradient(nx, ny + wobble, n.r, nx, ny + wobble, n.r + 10);
+        grad.addColorStop(0, n.color + '40');
+        grad.addColorStop(1, n.color + '00');
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      // Circle
+      ctx.beginPath();
+      ctx.arc(nx, ny + wobble, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color + (n.tier === 3 ? '60' : 'cc');
+      ctx.fill();
+      ctx.strokeStyle = n.color;
+      ctx.lineWidth = hover ? 2.5 : 1.5;
+      ctx.stroke();
+
+      // Label
+      if (n.label) {
+        ctx.fillStyle = '#fff';
+        ctx.font = (n.tier === 0 ? 'bold 11px' : '10px') + " 'JetBrains Mono', monospace";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(n.label, nx, ny + wobble);
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// Init when visible
+const netObs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { initNetwork(); netObs.disconnect(); }
+}, { threshold: 0.1 });
+const nc = document.getElementById('networkCanvas');
+if (nc) netObs.observe(nc);
 </script>
 </body>
 </html>
