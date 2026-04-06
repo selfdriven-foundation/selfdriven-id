@@ -148,3 +148,4 @@ KERI = SSI without requiring a blockchain.
 - [SSI, KERI & Cardano](/ssi/keri/cardano/) - Key management
 - [SSI, KERI & UTXO](/ssi/keri/utxo/) - Conceptual Relationship
 - [SSI, KERI & Midnight Network](/ssi/keri/midnight-network/) - Conceptual Comparison
+- [SSI, KERI & SPIFFE](/ssi/keri/spiffe) - How work together
