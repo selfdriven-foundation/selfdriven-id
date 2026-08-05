@@ -65,13 +65,13 @@ permalink: /ssi/keri/mls
 </style>
 
 <div class="media-panel">
-  <span class="media-panel__label">🎧 Listen</span>
-  <audio controls preload="none">
+  <span class="media-panel__label">Listen</span>
+  <audio controls preload="metadata">
     <source src="{{ '/assets/audio/Decentralized_Group_Messaging_with_KERI_and_MLS.m4a' | relative_url }}" type="audio/mp4">
     Your browser does not support the audio element —
     <a href="{{ '/assets/audio/Decentralized_Group_Messaging_with_KERI_and_MLS.m4a' | relative_url }}">download the audio</a>.
   </audio>
-  <a class="media-panel__pdf" href="{{ '/assets/pdf/KERI_and_MLS_Unified_Architecture.pdf' | relative_url }}">📄 PDF version</a>
+  <a class="media-panel__pdf" href="{{ '/assets/pdf/KERI_and_MLS_Unified_Architecture.pdf' | relative_url }}">PDF version</a>
 </div>
 
 Identity and secure communication are often treated as separate concerns. Identity systems establish *who* is participating, while secure messaging systems establish *how* participants communicate confidentially.
