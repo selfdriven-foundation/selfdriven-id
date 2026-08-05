@@ -4,10 +4,9 @@ title: KERI & MLS | selfdrivenID
 permalink: /ssi/keri/mls
 ---
 
-# SSI, KERI & MLS
-## A Reference Architecture for Secure Identity-Centric Group Communication
+## SSI, KERI & MLS
 
-### Abstract
+**A Reference Architecture for Secure Identity-Centric Group Communication**
 
 Identity and secure communication are often treated as separate concerns. Identity systems establish *who* is participating, while secure messaging systems establish *how* participants communicate confidentially.
 
@@ -26,7 +25,7 @@ The result is an architecture supporting:
 
 ---
 
-# 1. Motivation
+## 1. Motivation
 
 Most secure messaging systems solve only part of the problem.
 
@@ -57,7 +56,7 @@ Together these technologies naturally complement one another.
 
 ---
 
-# 2. Architectural Layers
+## 2. Architectural Layers
 
 ```
 +--------------------------------------+
@@ -90,7 +89,7 @@ MLS answers:
 
 ---
 
-# 3. Identity
+## 3. Identity
 
 Each participant owns a KERI Autonomous Identifier (AID).
 
@@ -120,11 +119,11 @@ Instead, it simply references KERI identities.
 
 ---
 
-# 4. Encryption Keys
+## 4. Encryption Keys
 
 Each identity maintains two classes of keys.
 
-## Identity Keys
+### Identity Keys
 
 Used for:
 
@@ -140,7 +139,7 @@ Ed25519
 
 ---
 
-## Encryption Keys
+### Encryption Keys
 
 Used for:
 
@@ -163,7 +162,7 @@ for post-quantum protection.
 
 ---
 
-# 5. Binding Encryption Keys
+## 5. Binding Encryption Keys
 
 A participant publishes an MLS encryption key.
 
@@ -183,7 +182,7 @@ This prevents attackers substituting fraudulent MLS keys.
 
 ---
 
-# 6. Joining a Group
+## 6. Joining a Group
 
 Suppose Alice creates a group.
 
@@ -213,7 +212,7 @@ Bob performs:
 
 ---
 
-# 7. MLS Tree
+## 7. MLS Tree
 
 Example:
 
@@ -238,7 +237,7 @@ The root produces:
 
 ---
 
-# 8. Sending Messages
+## 8. Sending Messages
 
 Application flow:
 
@@ -263,7 +262,7 @@ Every authorised member possesses the current epoch key.
 
 ---
 
-# 9. Member Rotation
+## 9. Member Rotation
 
 Suppose Alice rotates her KERI identity key.
 
@@ -284,7 +283,7 @@ The remainder of the tree remains unchanged.
 
 ---
 
-# 10. Member Removal
+## 10. Member Removal
 
 Suppose Bob leaves.
 
@@ -312,7 +311,7 @@ Forward secrecy is preserved.
 
 ---
 
-# 11. Recovery
+## 11. Recovery
 
 If an identity is compromised:
 
@@ -326,7 +325,7 @@ No global certificate revocation is required.
 
 ---
 
-# 12. Witness Integration
+## 12. Witness Integration
 
 KERI witnesses provide independent verification that:
 
@@ -338,7 +337,7 @@ MLS therefore relies upon verified identities rather than blind trust.
 
 ---
 
-# 13. Protocol Flow
+## 13. Protocol Flow
 
 ```
 Alice                    Bob
@@ -366,7 +365,7 @@ AES-GCM
 
 ---
 
-# 14. Post-Quantum Evolution
+## 14. Post-Quantum Evolution
 
 Current implementation:
 
@@ -408,9 +407,9 @@ without changing the overall architecture.
 
 ---
 
-# 15. Advantages
+## 15. Advantages
 
-## Decentralised Identity
+### Decentralised Identity
 
 No certificate authorities.
 
@@ -418,43 +417,43 @@ No central identity provider.
 
 ---
 
-## Cryptographic Agility
+### Cryptographic Agility
 
 Algorithms may be upgraded independently.
 
 ---
 
-## Forward Secrecy
+### Forward Secrecy
 
 Old messages remain protected after key compromise.
 
 ---
 
-## Post-Compromise Security
+### Post-Compromise Security
 
 Future epochs become secure following recovery.
 
 ---
 
-## Efficient Scaling
+### Efficient Scaling
 
 Membership updates affect only a logarithmic portion of the MLS tree.
 
 ---
 
-## Continuous Key Rotation
+### Continuous Key Rotation
 
 KERI rotation integrates naturally with MLS epoch updates.
 
 ---
 
-## Auditability
+### Auditability
 
 Identity changes are permanently recorded within KERI Key Event Logs.
 
 ---
 
-# 16. Reference Implementation
+## 16. Reference Implementation
 
 A Node.js reference implementation could consist of:
 
@@ -491,7 +490,7 @@ The initial implementation can rely entirely on Node.js' native `crypto` module 
 
 ---
 
-# Conclusion
+## Conclusion
 
 KERI and MLS address complementary problems. KERI establishes durable, decentralised identity with verifiable key lifecycle management, while MLS provides efficient, forward-secret group encryption with scalable membership changes.
 
