@@ -17,6 +17,7 @@ title: selfdriven ID
 - [dSociety Learn SSI](https://dsociety.io/learn-ssi)
 - [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn)
 - [SSI & KERI](/ssi/keri/)
+- [SSI, KERI & MLS](/ssi/keri/mls)
 - [GLEIF](https://www.gleif.org) - Global Legal Entity Identifier Foundation
 - [vLEI](hhttps://vlei.com) - Verifiable Legal Entity Identifier
 
