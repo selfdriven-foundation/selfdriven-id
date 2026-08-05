@@ -8,6 +8,72 @@ permalink: /ssi/keri/mls
 
 **A Reference Architecture for Secure Identity-Centric Group Communication**
 
+<style>
+.media-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(200, 68, 47, 0.25);
+  border-top: 3px solid #C8442F;
+  border-radius: 16px;
+  background: rgba(200, 68, 47, 0.05);
+}
+.media-panel__label {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.media-panel audio {
+  flex: 1 1 260px;
+  min-width: 220px;
+  height: 40px;
+}
+.media-panel__pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #C8442F;
+  border-radius: 999px;
+  color: #C8442F;
+  white-space: nowrap;
+}
+.media-panel__pdf:hover {
+  background: #C8442F;
+  color: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .media-panel {
+    border-color: rgba(232, 93, 74, 0.3);
+    border-top-color: #E85D4A;
+    background: rgba(232, 93, 74, 0.08);
+  }
+  .media-panel__pdf {
+    border-color: #E85D4A;
+    color: #E85D4A;
+  }
+  .media-panel__pdf:hover {
+    background: #E85D4A;
+    color: #0a0a0a;
+  }
+}
+</style>
+
+<div class="media-panel">
+  <span class="media-panel__label">🎧 Listen</span>
+  <audio controls preload="none">
+    <source src="{{ '/assets/audio/Decentralized_Group_Messaging_with_KERI_and_MLS.m4a' | relative_url }}" type="audio/mp4">
+    Your browser does not support the audio element —
+    <a href="{{ '/assets/audio/Decentralized_Group_Messaging_with_KERI_and_MLS.m4a' | relative_url }}">download the audio</a>.
+  </audio>
+  <a class="media-panel__pdf" href="{{ '/assets/pdf/KERI_and_MLS_Unified_Architecture.pdf' | relative_url }}">📄 PDF version</a>
+</div>
+
 Identity and secure communication are often treated as separate concerns. Identity systems establish *who* is participating, while secure messaging systems establish *how* participants communicate confidentially.
 
 This paper proposes an architecture that combines the **Key Event Receipt Infrastructure (KERI)** as the long-lived identity, authentication, and trust layer with **Messaging Layer Security (MLS)** as the dynamic group key management and encryption layer.
