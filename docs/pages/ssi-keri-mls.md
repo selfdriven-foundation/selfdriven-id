@@ -23,7 +23,7 @@ The result is an architecture supporting:
 - Continuous key rotation.
 - Decentralised trust without dependence on certificate authorities.
 
----
+
 
 ## 1. Motivation
 
@@ -54,7 +54,7 @@ KERI provides:
 
 Together these technologies naturally complement one another.
 
----
+
 
 ## 2. Architectural Layers
 
@@ -87,7 +87,7 @@ MLS answers:
 
 > What is the current shared encryption state?
 
----
+
 
 ## 3. Identity
 
@@ -117,7 +117,7 @@ MLS never manages identity.
 
 Instead, it simply references KERI identities.
 
----
+
 
 ## 4. Encryption Keys
 
@@ -137,7 +137,7 @@ Typically:
 Ed25519
 ```
 
----
+
 
 ### Encryption Keys
 
@@ -160,7 +160,7 @@ ML-KEM
 
 for post-quantum protection.
 
----
+
 
 ## 5. Binding Encryption Keys
 
@@ -180,7 +180,7 @@ Verified from KEL
 
 This prevents attackers substituting fraudulent MLS keys.
 
----
+
 
 ## 6. Joining a Group
 
@@ -210,7 +210,7 @@ Bob performs:
 4. Verify MLS encryption key.
 5. Join group.
 
----
+
 
 ## 7. MLS Tree
 
@@ -235,7 +235,7 @@ The root produces:
 - Exporter Secret
 - Confirmation Keys
 
----
+
 
 ## 8. Sending Messages
 
@@ -260,7 +260,7 @@ Messages are encrypted exactly once.
 
 Every authorised member possesses the current epoch key.
 
----
+
 
 ## 9. Member Rotation
 
@@ -281,7 +281,7 @@ MLS updates only the branch from Alice to the tree root.
 
 The remainder of the tree remains unchanged.
 
----
+
 
 ## 10. Member Removal
 
@@ -309,7 +309,7 @@ Bob cannot derive future keys.
 
 Forward secrecy is preserved.
 
----
+
 
 ## 11. Recovery
 
@@ -323,7 +323,7 @@ If an identity is compromised:
 
 No global certificate revocation is required.
 
----
+
 
 ## 12. Witness Integration
 
@@ -335,7 +335,7 @@ KERI witnesses provide independent verification that:
 
 MLS therefore relies upon verified identities rather than blind trust.
 
----
+
 
 ## 13. Protocol Flow
 
@@ -363,7 +363,7 @@ AES-GCM
                       Decrypt
 ```
 
----
+
 
 ## 14. Post-Quantum Evolution
 
@@ -405,7 +405,7 @@ ML-KEM
 
 without changing the overall architecture.
 
----
+
 
 ## 15. Advantages
 
@@ -415,43 +415,43 @@ No certificate authorities.
 
 No central identity provider.
 
----
+
 
 ### Cryptographic Agility
 
 Algorithms may be upgraded independently.
 
----
+
 
 ### Forward Secrecy
 
 Old messages remain protected after key compromise.
 
----
+
 
 ### Post-Compromise Security
 
 Future epochs become secure following recovery.
 
----
+
 
 ### Efficient Scaling
 
 Membership updates affect only a logarithmic portion of the MLS tree.
 
----
+
 
 ### Continuous Key Rotation
 
 KERI rotation integrates naturally with MLS epoch updates.
 
----
+
 
 ### Auditability
 
 Identity changes are permanently recorded within KERI Key Event Logs.
 
----
+
 
 ## 16. Reference Implementation
 
@@ -488,7 +488,7 @@ storage/
 
 The initial implementation can rely entirely on Node.js' native `crypto` module for Ed25519, X25519, HKDF and AES-GCM, allowing a working prototype with no external cryptographic dependencies.
 
----
+
 
 ## Conclusion
 
