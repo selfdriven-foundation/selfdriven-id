@@ -9,39 +9,39 @@ permalink: /framework/digital-relationship-trust
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>selfdriven — Digital Relationship Trust Framework</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ── Design Tokens ── */
 :root {
-  --bg: #f5f2ed;
-  --surface: #edeae3;
-  --surface2: #e5e1d8;
-  --border: #ddd8ce;
-  --text: #1a1410;
-  --muted: #6b5f52;
-  --muted2: #9e9085;
-  --accent: #c8442f;
-  --accent-dim: rgba(200, 68, 47, 0.10);
-  --accent-strong: rgba(200, 68, 47, 0.18);
-  --card-radius: 20px;
+  --bg: #ffffff;
+  --surface: #f6f5f7;
+  --surface2: #eeecef;
+  --border: #e6e3e7;
+  --text: #24202a;
+  --muted: #625c65;
+  --muted2: #8d8690;
+  --accent: #de5a31;
+  --accent-dim: rgba(222, 90, 49, 0.10);
+  --accent-strong: rgba(222, 90, 49, 0.18);
+  --card-radius: 12px;
   --shadow: 0 2px 16px rgba(0,0,0,0.07);
-  --glow: 0 0 40px rgba(200, 68, 47, 0.15);
+  --glow: 0 0 40px rgba(222, 90, 49, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0a0a;
-    --surface: #161616;
-    --surface2: #1e1e1e;
-    --border: #2a2a2a;
-    --text: #f0ede8;
-    --muted: #b0a89e;
-    --muted2: #7a7268;
-    --accent: #e85d4a;
-    --accent-dim: rgba(232, 93, 74, 0.12);
-    --accent-strong: rgba(232, 93, 74, 0.20);
+    --bg: #141217;
+    --surface: #1c1a20;
+    --surface2: #24212a;
+    --border: #2e2a33;
+    --text: #f1eef3;
+    --muted: #b3acb7;
+    --muted2: #7f7884;
+    --accent: #e8673f;
+    --accent-dim: rgba(232, 103, 63, 0.12);
+    --accent-strong: rgba(232, 103, 63, 0.20);
     --shadow: 0 2px 16px rgba(0,0,0,0.4);
-    --glow: 0 0 40px rgba(232, 93, 74, 0.2);
+    --glow: 0 0 40px rgba(232, 103, 63, 0.2);
   }
 }
 
@@ -49,7 +49,7 @@ permalink: /framework/digital-relationship-trust
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -134,14 +134,14 @@ nav.scrolled {
 .btn-primary {
   background: var(--accent); color: #fff;
   border: none; border-radius: 999px;
-  padding: 14px 36px; font-family: 'Poppins'; font-size: 14px; font-weight: 600;
+  padding: 14px 36px; font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif; font-size: 14px; font-weight: 600;
   cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--glow); }
 .btn-outline {
   background: transparent; color: var(--text);
   border: 1.5px solid var(--border); border-radius: 999px;
-  padding: 14px 36px; font-family: 'Poppins'; font-size: 14px; font-weight: 600;
+  padding: 14px 36px; font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif; font-size: 14px; font-weight: 600;
   cursor: pointer; transition: border-color 0.3s;
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
@@ -197,7 +197,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   display: flex; align-items: center; justify-content: space-between;
 }
 .stack-num {
-  font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600;
+  font-family: ui-monospace; font-size: 12px; font-weight: 600;
   color: var(--accent); background: var(--accent-dim);
   padding: 4px 10px; border-radius: 8px;
   margin-right: 16px;
@@ -207,7 +207,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   flex: 1;
 }
 .stack-tag {
-  font-family: 'JetBrains Mono'; font-size: 11px;
+  font-family: ui-monospace; font-size: 11px;
   color: var(--muted); background: var(--surface2);
   padding: 4px 12px; border-radius: 8px;
 }
@@ -243,7 +243,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   font-size: 13px; color: var(--muted); line-height: 1.6;
 }
 .detail-card code {
-  font-family: 'JetBrains Mono'; font-size: 11px;
+  font-family: ui-monospace; font-size: 11px;
   background: var(--accent-dim); color: var(--accent);
   padding: 2px 6px; border-radius: 4px;
 }
@@ -268,7 +268,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   background: var(--surface);
   border: 2.5px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 600;
+  font-family: ui-monospace; font-size: 13px; font-weight: 600;
   color: var(--accent);
   transition: all 0.3s;
   cursor: pointer;
@@ -321,14 +321,14 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   max-width: none;
 }
 @media (prefers-color-scheme: dark) {
-  .network-section { background: #141414; }
+  .network-section { background: #1f1c23; }
 }
 .network-section .section-eyebrow { color: var(--accent); }
 .network-section .section-title { color: var(--bg); }
 @media (prefers-color-scheme: dark) {
   .network-section .section-title { color: var(--text); }
 }
-.network-section .section-desc { color: #9e9085; }
+.network-section .section-desc { color: #8d8690; }
 .network-inner { max-width: 1200px; margin: 0 auto; }
 .network-canvas-wrap {
   position: relative;
@@ -353,7 +353,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   .legend-item { color: var(--muted); }
 }
 @media (prefers-color-scheme: light) {
-  .legend-item { color: #9e9085; }
+  .legend-item { color: #8d8690; }
 }
 .legend-dot {
   width: 10px; height: 10px; border-radius: 50%;
@@ -405,7 +405,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
   margin-top: 14px;
 }
 .policy-tag {
-  font-family: 'JetBrains Mono'; font-size: 10px;
+  font-family: ui-monospace; font-size: 10px;
   background: var(--surface2); color: var(--muted);
   padding: 3px 10px; border-radius: 6px;
   border: 1px solid var(--border);
@@ -431,7 +431,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
 .gov-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
 .gov-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 .gov-tech {
-  font-family: 'JetBrains Mono'; font-size: 11px;
+  font-family: ui-monospace; font-size: 11px;
   color: var(--accent); margin-top: 12px;
   display: inline-block;
   background: var(--accent-dim);
@@ -456,7 +456,7 @@ section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
 .risk-slider {
   width: 100%; height: 8px;
   -webkit-appearance: none;
-  background: linear-gradient(90deg, #2d8a4e, #c8442f);
+  background: linear-gradient(90deg, #286647, #de5a31);
   border-radius: 4px;
   outline: none;
   cursor: pointer;
@@ -533,6 +533,9 @@ footer .footer-links a:hover { color: var(--accent); }
   .lifecycle-track { flex-wrap: wrap; justify-content: center; }
   .lifecycle-arrow { width: 30px; }
 }
+
+/* selfdriven.tech look: display headings in Space Grotesk */
+.hero h1,.section-title,.subsection-title,.layer-name,.stage-detail-title,.tier-card-title,.proto-name,.policy-title,.matrix-title,.stack-label,.gov-card h4,.policy-card h3,.detail-card h4,.layer-stack .layer-name{font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif;letter-spacing:-.03em}
 </style>
 </head>
 <body>
@@ -733,7 +736,7 @@ footer .footer-links a:hover { color: var(--accent); }
         <span>Primary AID (You)</span>
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background: #2d8a4e;"></div>
+        <div class="legend-dot" style="background: #286647;"></div>
         <span>Tier 1 — Direct Relationship</span>
       </div>
       <div class="legend-item">
@@ -741,7 +744,7 @@ footer .footer-links a:hover { color: var(--accent); }
         <span>Tier 2 — Shared Attestation</span>
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background: #9e9085; opacity: 0.5;"></div>
+        <div class="legend-dot" style="background: #8d8690; opacity: 0.5;"></div>
         <span>Teammate / Delegated</span>
       </div>
     </div>
@@ -863,8 +866,8 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <input type="range" class="risk-slider" id="riskSlider" min="0" max="100" value="50" oninput="updateRisk(this.value)">
       <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-        <span style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono';">Multi-sig · Full KYC</span>
-        <span style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono';">Single passkey · Ephemeral</span>
+        <span style="font-size: 11px; color: var(--muted); font-family: ui-monospace;">Multi-sig · Full KYC</span>
+        <span style="font-size: 11px; color: var(--muted); font-family: ui-monospace;">Single passkey · Ephemeral</span>
       </div>
     </div>
     <div class="risk-output">
@@ -937,24 +940,24 @@ function initNetwork() {
   resize();
   window.addEventListener('resize', resize);
 
-  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#c8442f';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#de5a31';
 
   const nodes = [
     { x: 0.5, y: 0.45, r: 22, color: accent, label: 'You', tier: 0 },
-    { x: 0.28, y: 0.3, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
-    { x: 0.72, y: 0.25, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
-    { x: 0.35, y: 0.7, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
-    { x: 0.68, y: 0.65, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
-    { x: 0.15, y: 0.55, r: 14, color: '#2d8a4e', label: 'R', tier: 1 },
+    { x: 0.28, y: 0.3, r: 14, color: '#286647', label: 'R', tier: 1 },
+    { x: 0.72, y: 0.25, r: 14, color: '#286647', label: 'R', tier: 1 },
+    { x: 0.35, y: 0.7, r: 14, color: '#286647', label: 'R', tier: 1 },
+    { x: 0.68, y: 0.65, r: 14, color: '#286647', label: 'R', tier: 1 },
+    { x: 0.15, y: 0.55, r: 14, color: '#286647', label: 'R', tier: 1 },
     { x: 0.12, y: 0.18, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
     { x: 0.4, y: 0.14, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
     { x: 0.85, y: 0.38, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
     { x: 0.88, y: 0.7, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
     { x: 0.22, y: 0.85, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
     { x: 0.55, y: 0.82, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.05, y: 0.4, r: 7, color: '#9e9085', label: '', tier: 3 },
-    { x: 0.92, y: 0.2, r: 7, color: '#9e9085', label: '', tier: 3 },
-    { x: 0.78, y: 0.85, r: 7, color: '#9e9085', label: '', tier: 3 },
+    { x: 0.05, y: 0.4, r: 7, color: '#8d8690', label: '', tier: 3 },
+    { x: 0.92, y: 0.2, r: 7, color: '#8d8690', label: '', tier: 3 },
+    { x: 0.78, y: 0.85, r: 7, color: '#8d8690', label: '', tier: 3 },
   ];
 
   const edges = [
@@ -986,7 +989,7 @@ function initNetwork() {
       ctx.beginPath();
       ctx.moveTo(ax, ay);
       ctx.lineTo(bx, by);
-      ctx.strokeStyle = 'rgba(200,68,47,0.12)';
+      ctx.strokeStyle = 'rgba(222,90,49,0.12)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -996,7 +999,7 @@ function initNetwork() {
       const py = ay + (by - ay) * t;
       ctx.beginPath();
       ctx.arc(px, py, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(200,68,47,0.3)';
+      ctx.fillStyle = 'rgba(222,90,49,0.3)';
       ctx.fill();
     });
 
@@ -1034,7 +1037,7 @@ function initNetwork() {
       // Label
       if (n.label) {
         ctx.fillStyle = '#fff';
-        ctx.font = `${n.tier === 0 ? 'bold 11px' : '10px'} 'JetBrains Mono', monospace`;
+        ctx.font = `${n.tier === 0 ? 'bold 11px' : '10px'} ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(n.label, nx, ny + wobble);

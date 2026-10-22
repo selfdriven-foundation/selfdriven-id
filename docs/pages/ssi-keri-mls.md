@@ -16,10 +16,10 @@ permalink: /ssi/keri/mls
   gap: 1rem;
   margin: 1.5rem 0 2rem;
   padding: 1.1rem 1.25rem;
-  border: 1px solid rgba(200, 68, 47, 0.25);
-  border-top: 3px solid #C8442F;
+  border: 1px solid rgba(222, 90, 49, 0.25);
+  border-top: 3px solid #de5a31;
   border-radius: 16px;
-  background: rgba(200, 68, 47, 0.05);
+  background: rgba(222, 90, 49, 0.05);
 }
 .media-panel__label {
   font-weight: 700;
@@ -38,28 +38,28 @@ permalink: /ssi/keri/mls
   font-weight: 600;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border: 1px solid #C8442F;
+  border: 1px solid #de5a31;
   border-radius: 999px;
-  color: #C8442F;
+  color: #de5a31;
   white-space: nowrap;
 }
 .media-panel__pdf:hover {
-  background: #C8442F;
+  background: #de5a31;
   color: #fff;
 }
 @media (prefers-color-scheme: dark) {
   .media-panel {
-    border-color: rgba(232, 93, 74, 0.3);
-    border-top-color: #E85D4A;
-    background: rgba(232, 93, 74, 0.08);
+    border-color: rgba(232, 103, 63, 0.3);
+    border-top-color: #e8673f;
+    background: rgba(232, 103, 63, 0.08);
   }
   .media-panel__pdf {
-    border-color: #E85D4A;
-    color: #E85D4A;
+    border-color: #e8673f;
+    color: #e8673f;
   }
   .media-panel__pdf:hover {
-    background: #E85D4A;
-    color: #0a0a0a;
+    background: #e8673f;
+    color: #141217;
   }
 }
 </style>
