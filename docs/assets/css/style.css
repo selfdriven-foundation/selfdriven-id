@@ -862,3 +862,9 @@ button.button{border:0;font:inherit;font-weight:600;cursor:pointer}
 	.ov-block + .ov-block{margin-top:44px}
 	.ov-rows strong{font-size:1.1rem}
 }
+
+/* Level card precedent line (/ssi/keri/authz/lean) */
+.shift-body.precedent{border-top:1px solid var(--line);padding-top:14px;font-size:15px}
+.shift-body.precedent strong{color:var(--ink);font-weight:600}
+.shift-card.to .shift-body.precedent{border-color:rgba(255,255,255,.16)}
+.scope-list li.plain .scope-num{overflow-wrap:anywhere}

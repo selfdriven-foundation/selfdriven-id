@@ -376,6 +376,35 @@ permalink: /ssi/keri/authz/lean
 				</div>
 			</div>
 			<p class="shift-foot">These theorems establish properties of the formal policy for all possible inputs, rather than merely testing selected scenarios.</p>
+
+			<div class="scope-group">
+				<div class="scope-head">
+					<span class="scope-tag">Cedar policy</span>
+					<h3>The same policy in Cedar.</h3>
+					<p>Cedar denies by default, and a matching <code class="inline">forbid</code> overrides any <code class="inline">permit</code>, a property its authors prove in Lean as <code class="inline">forbid_trumps_permit</code>. Revocation therefore sits in its own forbid policy.</p>
+					<p>Cedar trusts the context it is given. Here that context would be filled from verified KERI and ACDC evidence.</p>
+				</div>
+				<div class="code-wrap">
+					<figure class="code-panel">
+						<figcaption class="code-head"><span>policy.cedar · Cedar</span><span>Illustrative</span></figcaption>
+<pre tabindex="0" aria-label="Cedar policy"><code><span class="k">// Approve a claim within the delegated limit</span>
+<span class="o">permit</span> (
+  principal,
+  action <span class="o">==</span> <span class="n">Action::"approveClaim"</span>,
+  resource <span class="o">is</span> Claim
+)
+<span class="o">when</span> {
+  context.identityVerified <span class="o">&amp;&amp;</span>
+  context.authorityValid <span class="o">&amp;&amp;</span>
+  resource.amount <span class="o">&lt;=</span> context.approvalLimit
+};
+
+<span class="k">// Revoked authority can never be used</span>
+<span class="o">forbid</span> (principal, action, resource)
+<span class="o">when</span> { context.authorityRevoked };</code></pre>
+					</figure>
+				</div>
+			</div>
 		</section>
 
 		<section class="scope hub" id="model" aria-labelledby="model-title">
@@ -448,6 +477,19 @@ permalink: /ssi/keri/authz/lean
 					<li class="plain wide"><span class="scope-num">09</span><h4>Policy consistency</h4><p>Defined classes of contradictory rules are prevented.</p></li>
 				</ul>
 			</div>
+			<div class="scope-group">
+				<div class="scope-head">
+					<span class="scope-tag">Precedent · Cedar</span>
+					<h3>Already proved for a production engine.</h3>
+					<p>Cedar's Lean proofs cover several of these properties for its authoriser and validator. Its symbolic analyses, such as policy equivalence, are proved sound and complete against its semantics.</p>
+				</div>
+				<ul class="scope-list">
+					<li class="plain"><span class="scope-num">default_deny</span><h4>No permit, no access</h4><p>A request that no policy explicitly permits is denied. Guarantee 01.</p></li>
+					<li class="plain"><span class="scope-num">forbid_trumps_permit</span><h4>A matching forbid always wins</h4><p>An explicitly forbidden request is denied whatever else permits it. The basis for guarantee 04.</p></li>
+					<li class="plain"><span class="scope-num">order_and_dup_independent</span><h4>Order does not matter</h4><p>Reordering or duplicating policies cannot change a decision. Supports guarantee 08.</p></li>
+					<li class="plain"><span class="scope-num">validation_is_sound</span><h4>Validated policies evaluate cleanly</h4><p>When policies, request and entities validate against the schema, evaluation cannot fail with a type error.</p></li>
+				</ul>
+			</div>
 		</section>
 
 		<section class="scope hub" id="levels" aria-labelledby="levels-title">
@@ -460,6 +502,7 @@ permalink: /ssi/keri/authz/lean
 					<p class="shift-label">Level 1</p>
 					<p class="shift-q">Verified authorisation engine</p>
 					<p class="shift-body">Use Lean during development to prove properties of the decision engine. Execute the verified decision function at runtime.</p>
+					<p class="shift-body precedent"><strong>Precedent: Cedar.</strong> AWS's open-source policy language is built this way. Its evaluator, authoriser and validator are modelled and proved in Lean, and the Rust engine is checked against those models with millions of random inputs before each release. It proves the engine, not individual decisions: that is Level 2.</p>
 				</div>
 				<div class="shift-card to">
 					<p class="shift-label">Level 2</p>
@@ -539,13 +582,17 @@ permalink: /ssi/keri/authz/lean
 				<div class="scope-head">
 					<span class="scope-tag">Sources</span>
 					<h3>Where to go deeper.</h3>
-					<p>The specification, the prover and the architecture this page builds on.</p>
+					<p>The specification, the prover, Cedar's verified engine and the architecture this page builds on.</p>
 				</div>
 				<ul class="scope-list link-list">
 					<li><a class="link-row" href="https://openid.net/specs/authorization-api-1_0-final.html"><span><span class="scope-num">OpenID Foundation</span><strong>AuthZEN Authorization API 1.0</strong><small>Subject, action, resource, context and decision.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
 					<li><a class="link-row" href="https://lean-lang.org/"><span><span class="scope-num">Lean</span><strong>Lean language</strong><small>Programming language and theorem prover.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
 					<li><a class="link-row" href="https://lean-lang.org/theorem_proving_in_lean4/Propositions-and-Proofs/"><span><span class="scope-num">Theorem Proving in Lean 4</span><strong>Propositions and proofs</strong><small>Propositions as types, proofs as terms.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
 					<li><a class="link-row" href="/ssi/keri/authz"><span><span class="scope-num">selfdriven.id</span><strong>KERI &amp; AuthZ</strong><small>The authority architecture this page builds on.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://aws.amazon.com/blogs/opensource/lean-into-verified-software-development/"><span><span class="scope-num">AWS Open Source Blog</span><strong>Cedar and Lean</strong><small>How AWS models and proves Cedar in Lean, and tests its Rust engine against the models.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://arxiv.org/abs/2407.01688"><span><span class="scope-num">Paper · arXiv</span><strong>How We Built Cedar</strong><small>Verification-guided development: Lean models, proofs and differential random testing.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://github.com/cedar-policy/cedar-spec"><span><span class="scope-num">GitHub · cedar-policy</span><strong>cedar-spec</strong><small>Cedar's Lean models and proofs, including the authorisation and validation theorems.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://aws.amazon.com/blogs/security/how-to-support-openid-authzen-requests-with-amazon-verified-permissions"><span><span class="scope-num">AWS Security Blog</span><strong>Cedar behind AuthZEN</strong><small>Serving OpenID AuthZEN requests with Amazon Verified Permissions, which runs on Cedar.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
 				</ul>
 			</div>
 		</section>
