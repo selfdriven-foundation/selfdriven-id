@@ -503,3 +503,135 @@ button.button{border:0;font:inherit;font-weight:600;cursor:pointer}
 	.lei-cell{height:32px;font-size:11px}
 	.lei-gap{flex-basis:4px}
 }
+
+/* ═══ selfdriven.id additions · /ssi/keri/authz ═════════════════════ */
+
+/* Six-layer stack: three columns of the dark layers panel */
+.layer-list.three{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:36px}
+
+/* Plain cards: title-only cards and a full-width card */
+.scope-list li.plain h4:last-child{margin:0}
+.scope-list li.wide{grid-column:1/-1}
+
+/* Link to a sub-page from a scope head */
+.scope-head .sub-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:15px;text-decoration:underline;text-decoration-color:var(--orange)}
+
+/* Formula as a scope heading */
+.scope-head h3.formula{font-family:var(--font-mono);font-weight:600;letter-spacing:-.02em;white-space:nowrap;font-size:clamp(1.1rem,1.7vw,1.55rem)}
+
+/* Tile letters (function tile) */
+.tile-letter{font-family:var(--font-mono);font-size:15px;font-weight:600}
+
+/* Code panels: dark in both modes, like the layers panel */
+.code-wrap{min-width:0}
+.code-panel{margin:0;min-width:0;max-width:100%;background:var(--panel);color:#e9e6ec;border-radius:8px;overflow:hidden}
+.code-head{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.12);font:600 11px/1.4 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.code-head span:last-child{color:var(--orange-on-dark)}
+.code-panel pre{margin:0;padding:18px 20px 20px;overflow-x:auto;font:13.5px/1.7 var(--font-mono);tab-size:2}
+.code-panel pre:focus-visible{outline:3px solid var(--orange-on-dark);outline-offset:-3px}
+.code-panel code{font:inherit}
+.code-panel .k{color:rgba(255,255,255,.6)}
+.code-panel .s{color:#ffffff}
+.code-panel .n,.code-panel .o{color:var(--orange-on-dark)}
+.code-panel .o{font-weight:600}
+
+/* Identity-centric → authority-centric */
+.shift{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:20px;border-top:1px solid var(--line);padding-top:38px}
+.shift-card{min-width:0;border:1px solid var(--line);border-radius:7px;padding:30px 32px}
+.shift-label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.shift-q{font-family:var(--font-display);font-weight:600;font-size:clamp(1.35rem,2.1vw,1.9rem);line-height:1.2;letter-spacing:-.03em;text-wrap:balance;margin:0}
+.shift-card.from .shift-q{color:var(--muted)}
+.shift-card.to{background:var(--panel);border-color:var(--panel);color:#ffffff}
+.shift-card.to .shift-label{color:var(--orange-on-dark)}
+.shift-card.to em{font-style:normal;color:var(--orange-on-dark)}
+.shift-foot{font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;line-height:1.35;max-width:36em;margin:28px 0 0}
+
+@media(max-width:1100px){
+	.layer-list.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+	.layer-list.three{grid-template-columns:1fr}
+	.shift{grid-template-columns:1fr;padding-top:28px}
+	.shift-card{padding:24px 22px}
+	.code-panel pre{font-size:12px;padding:16px}
+	.scope-list.inputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+	.scope-list.inputs li.plain{padding:16px}
+	.scope-list.inputs h4{font-size:1rem}
+	.shift-foot{font-size:1.15rem}
+}
+
+/* ═══ selfdriven.id additions · /ssi/keri/authz/lean ════════════════ */
+/* Builds on the /ssi/keri/authz block (code panels, shift cards) and the /vlei/simulator block (sim-out, checks) */
+
+/* Hero: inference bar of the proof tree */
+.proof-bar{stroke:#ffffff;stroke-width:1.5;opacity:.6}
+
+/* Proposition as the statement boundary */
+.statement-side .boundary.prop{font-size:1.6rem;letter-spacing:-.03em}
+.statement-side .boundary.prop i{font-style:italic;color:var(--orange)}
+
+/* Architecture: eight steps in the dark panel */
+.layer-list.eight{row-gap:40px}
+
+/* Code-panel captions that must keep their case (Lean names) */
+.code-head.keep{text-transform:none;letter-spacing:.03em}
+
+/* Inline code in scope heads */
+.section-note code.inline,.scope-head code.inline{font-family:var(--font-mono);font-size:.88em;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+
+/* Closing line after a hub's groups */
+.hub>.shift-foot{margin-top:30px}
+
+/* Two levels: neither card muted */
+.shift.levels{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shift.levels .shift-card.from .shift-q{color:var(--ink)}
+.shift-body{margin:14px 0 0;font-size:16px;line-height:1.6;color:var(--muted)}
+.shift-card.to .shift-body{color:rgba(255,255,255,.72)}
+.hub>.shift{margin-top:24px}
+
+/* Interactive authorisation model */
+.model{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start;border-top:1px solid var(--line);padding-top:38px}
+.model-in{min-width:0;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:7px}
+.model-in>.eyebrow{color:var(--muted);margin:0 0 18px}
+.model fieldset{border:0;padding:0;margin:24px 0 0;min-width:0}
+.model legend{padding:0;margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.money{position:relative}
+.money .cur{position:absolute;left:13px;top:50%;transform:translateY(-50%);font:16px var(--font-body);color:var(--muted);pointer-events:none}
+.sim-field .money input{padding-left:28px;font-size:16px}
+.sim-field input.range{min-height:0;height:28px;padding:0;margin:12px 0 0;border:0;background:none;accent-color:var(--orange)}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.seg label{position:relative;display:block}
+.seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.seg span{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font:600 15px var(--font-display);letter-spacing:-.01em;white-space:nowrap}
+.seg input:checked+span{background:var(--button-bg);border-color:var(--button-bg);color:var(--button-fg)}
+.seg input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;font-weight:500;cursor:pointer}
+.toggle input{appearance:none;-webkit-appearance:none;position:relative;flex:0 0 auto;width:46px;height:28px;margin:0;border-radius:999px;background:var(--muted2);cursor:pointer;transition:background .2s}
+.toggle input::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#ffffff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.toggle input:checked{background:var(--orange)}
+.toggle input:checked::after{transform:translateX(18px)}
+.toggle input:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.model-in .button.ghost{margin-top:22px;min-height:44px}
+.model .sim-out{position:static}
+.model-out .eyebrow{margin:0 0 6px}
+.verdict{margin:0 0 6px;font-family:var(--font-display);font-weight:600;font-size:clamp(2.3rem,3.6vw,3.2rem);line-height:1;letter-spacing:-.045em;color:#ffffff}
+.verdict.deny{color:var(--orange-on-dark)}
+.verdict-why{margin:0 0 22px;font-size:15px;color:rgba(255,255,255,.72)}
+.model-out .sim-code{margin:0 0 22px}
+.model-out .checks-head{margin-bottom:0}
+.model .check .mark .i-x{display:none}
+.model .check.fail .mark{color:var(--orange-on-dark)}
+.model .check.fail .mark .i-ok{display:none}
+.model .check.fail .mark .i-x{display:block}
+.model .check p{font-family:var(--font-mono);font-size:13px}
+
+@media(max-width:960px){
+	.model{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+	.shift.levels{grid-template-columns:1fr}
+	.model{padding-top:28px;gap:20px}
+	.model-in{padding:20px 16px}
+	.model .sim-out{padding:22px 18px}
+	.statement-side .boundary.prop{font-size:1.35rem}
+}

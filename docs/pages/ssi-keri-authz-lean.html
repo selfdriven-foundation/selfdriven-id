@@ -1,0 +1,466 @@
+---
+layout: null
+title: AuthZ & Lean — selfdriven.id
+permalink: /ssi/keri/authz/lean
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+	<meta charset="UTF-8" />
+	<title>AuthZ &amp; Lean — selfdriven.id</title>
+	<meta name="description" content="AuthZ and Lean: from authorisation based on trusted software to authorisation based on mathematically verified logic. Proof-carrying authorisation for human and autonomous interactions." />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<link rel="shortcut icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png">
+	<link rel="apple-touch-icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png" />
+	<meta property="og:title" content="AuthZ &amp; Lean — selfdriven.id" />
+	<meta property="og:description" content="Authorisation as a proposition, verified in Lean: KERI, ACDC, Verified Context Graphs, AuthZEN and entityOS Sentinel." />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="header">
+	<a class="logo" href="/" aria-label="selfdriven ID home">
+		<img class="logo-id" src="data:image/png;base64,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" alt="selfdriven" />
+	</a>
+	<nav class="nav" aria-label="Primary">
+		<a href="#proposition">Proposition</a>
+		<a href="#architecture">Architecture</a>
+		<a href="#example">Example</a>
+		<a href="#model">Model</a>
+		<a href="#guarantees">Guarantees</a>
+		<a href="/ssi/keri/authz">KERI &amp; AuthZ</a>
+	</nav>
+</header>
+
+	<main class="main-content" id="main">
+
+		<section class="hero" id="top">
+			<div class="hero-copy">
+				<p class="eyebrow">selfdriven · ID · AuthZ &amp; Lean</p>
+				<h1>From trusted software to verified <em>logic</em><span>.</span></h1>
+				<p class="intro">AuthZ determines whether an action is permitted. Lean can formally prove that the authorisation logic satisfies its intended security properties.</p>
+				<a class="button" href="#model">Try the authorisation model <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+				<a class="text-link" href="/ssi/keri/authz">Part of KERI &amp; AuthZ: read the overview</a>
+			</div>
+			<div class="hero-media">
+				<a class="hero-art" href="#example">
+					<span class="ward" aria-hidden="true">
+						<svg viewBox="0 0 600 470" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" focusable="false">
+							<rect width="600" height="470" style="fill:var(--panel)"/>
+							<line class="grid-line" x1="0" y1="0" x2="0" y2="470"/><line class="grid-line" x1="30" y1="0" x2="30" y2="470"/><line class="grid-line" x1="60" y1="0" x2="60" y2="470"/><line class="grid-line" x1="90" y1="0" x2="90" y2="470"/><line class="grid-line" x1="120" y1="0" x2="120" y2="470"/><line class="grid-line" x1="150" y1="0" x2="150" y2="470"/><line class="grid-line" x1="180" y1="0" x2="180" y2="470"/><line class="grid-line" x1="210" y1="0" x2="210" y2="470"/><line class="grid-line" x1="240" y1="0" x2="240" y2="470"/><line class="grid-line" x1="270" y1="0" x2="270" y2="470"/><line class="grid-line" x1="300" y1="0" x2="300" y2="470"/><line class="grid-line" x1="330" y1="0" x2="330" y2="470"/><line class="grid-line" x1="360" y1="0" x2="360" y2="470"/><line class="grid-line" x1="390" y1="0" x2="390" y2="470"/><line class="grid-line" x1="420" y1="0" x2="420" y2="470"/><line class="grid-line" x1="450" y1="0" x2="450" y2="470"/><line class="grid-line" x1="480" y1="0" x2="480" y2="470"/><line class="grid-line" x1="510" y1="0" x2="510" y2="470"/><line class="grid-line" x1="540" y1="0" x2="540" y2="470"/><line class="grid-line" x1="570" y1="0" x2="570" y2="470"/><line class="grid-line" x1="600" y1="0" x2="600" y2="470"/><line class="grid-line" x1="0" y1="0" x2="600" y2="0"/><line class="grid-line" x1="0" y1="30" x2="600" y2="30"/><line class="grid-line" x1="0" y1="60" x2="600" y2="60"/><line class="grid-line" x1="0" y1="90" x2="600" y2="90"/><line class="grid-line" x1="0" y1="120" x2="600" y2="120"/><line class="grid-line" x1="0" y1="150" x2="600" y2="150"/><line class="grid-line" x1="0" y1="180" x2="600" y2="180"/><line class="grid-line" x1="0" y1="210" x2="600" y2="210"/><line class="grid-line" x1="0" y1="240" x2="600" y2="240"/><line class="grid-line" x1="0" y1="270" x2="600" y2="270"/><line class="grid-line" x1="0" y1="300" x2="600" y2="300"/><line class="grid-line" x1="0" y1="330" x2="600" y2="330"/><line class="grid-line" x1="0" y1="360" x2="600" y2="360"/><line class="grid-line" x1="0" y1="390" x2="600" y2="390"/><line class="grid-line" x1="0" y1="420" x2="600" y2="420"/><line class="grid-line" x1="0" y1="450" x2="600" y2="450"/>
+							<text class="readout-label" x="115" y="118">PREMISES</text>
+							<text class="readout" x="115" y="160" font-size="44" font-weight="600">4</text>
+							<text class="readout-label" x="250" y="118">THEOREMS</text>
+							<text class="readout" x="250" y="160" font-size="44" font-weight="600">2</text>
+							<text class="readout-label" x="420" y="118">SORRY</text>
+							<text class="readout" x="420" y="160" font-size="44" font-weight="600">0</text>
+							<circle class="kel-node anchored" cx="180" cy="214" r="8"/>
+							<circle class="kel-node anchored" cx="260" cy="214" r="8"/>
+							<circle class="kel-node anchored" cx="340" cy="214" r="8"/>
+							<circle class="kel-node anchored" cx="420" cy="214" r="8"/>
+							<text class="kel-tag" x="180" y="244" text-anchor="middle">identity</text>
+							<text class="kel-tag" x="260" y="244" text-anchor="middle">authority</text>
+							<text class="kel-tag" x="340" y="244" text-anchor="middle">¬revoked</text>
+							<text class="kel-tag" x="420" y="244" text-anchor="middle">≤ limit</text>
+							<line class="proof-bar" x1="150" y1="262" x2="450" y2="262"/>
+							<path class="trace-glow" d="M0,295 L442,295"/>
+							<path class="trace" d="M0,295 L442,295"/>
+							<rect class="os-core" x="220" y="278" width="160" height="34" rx="6"/>
+							<circle class="pulse" cx="238" cy="295" r="5"/>
+							<text class="os-core-label" x="252" y="299">⊢ authorised r</text>
+							<circle cx="456" cy="295" r="14" style="fill:var(--orange)"/>
+							<path d="M449,295 l5,5 l9,-10" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+							<text class="kel-tag" x="456" y="330" text-anchor="middle">permit</text>
+							<path class="receipt" d="M300,312 L210,338 M300,312 L390,338"/>
+							<circle class="kel-node latest" cx="210" cy="342" r="6"/>
+							<circle class="kel-node latest" cx="390" cy="342" r="6"/>
+							<text class="kel-tag" x="210" y="368" text-anchor="middle">no_excess_approval</text>
+							<text class="kel-tag" x="390" y="368" text-anchor="middle">no_revoked_authority</text>
+						</svg>
+					</span>
+					<span class="art-label">SELFDRIVEN / ID · AUTHZ · LEAN</span>
+					<span class="art-foot">Four premises. One verified conclusion. <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span>
+				</a>
+			</div>
+		</section>
+
+		<div class="stats">
+			<div class="stat"><div class="stat-num">4</div><p class="stat-label">conditions in the example claim policy</p></div>
+			<div class="stat"><div class="stat-num">2</div><p class="stat-label">theorems, holding for all possible inputs</p></div>
+			<div class="stat"><div class="stat-num">9</div><p class="stat-label">security properties Lean could prove</p></div>
+			<div class="stat"><div class="stat-num">4</div><p class="stat-label">layers of trust: cryptographic, contextual, logical, operational</p></div>
+		</div>
+
+		<section class="statement" id="proposition" aria-labelledby="proposition-title">
+			<div class="statement-main">
+				<p class="eyebrow">AuthZ as a mathematical proposition</p>
+				<h2 id="proposition-title">Every authorisation request is a <em>proposition</em><span>.</span></h2>
+			</div>
+			<div class="statement-side">
+				<p>Every authorisation request can be expressed as a proposition over a subject <i>s</i>, an action <i>a</i>, a resource <i>r</i> and a context <i>c</i>. These correspond directly to the AuthZEN information model.</p>
+				<p>In Lean, propositions are types, and proofs establish that those propositions hold. This creates a natural relationship between authorisation and formal verification.</p>
+				<p class="boundary prop">Permitted(<i>s</i>, <i>a</i>, <i>r</i>, <i>c</i>)</p>
+				<a class="text-link" href="#example">See it in Lean 4 <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+			</div>
+		</section>
+
+		<section class="layers" id="architecture" aria-labelledby="architecture-title">
+			<div class="layers-head">
+				<div><p class="eyebrow">Proposed architecture</p><h2 id="architecture-title">From signed request to verified <span>decision</span>.</h2></div>
+				<p>Together, AuthZ and Lean enable a transition from authorisation based on trusted software to authorisation based on mathematically verified logic. Each component has one responsibility.</p>
+			</div>
+			<ol class="layer-list eight">
+				<li class="layer">
+					<span class="layer-step">01 · Request</span>
+					<h3>Human / Autonomous Intelligence</h3>
+					<p>Signed request to perform an action.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">02 · KERI</span>
+					<h3>Verified identity</h3>
+					<p>Prove identity and key control.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">03 · ACDC</span>
+					<h3>Verified authority</h3>
+					<p>Provide verifiable evidence of authority.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">04 · AuthZEN</span>
+					<h3>Standardised authorisation request</h3>
+					<p>Standardise authorisation requests and responses.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">05 · PDP · VCG</span>
+					<h3>Verified Context Graph</h3>
+					<p>Facts, relationships, rules and constraints. Represents contextual relationships and constraints.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">06 · PDP · Lean</span>
+					<h3>Formally verified decision function</h3>
+					<p>Formally verify the authorisation logic.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">07 · Decision</span>
+					<h3>Permit or deny</h3>
+					<p>The policy decision point returns one of two outcomes.</p>
+				</li>
+				<li class="layer">
+					<span class="layer-step">08 · entityOS Sentinel</span>
+					<h3>Enforcement and verifiable decision receipt</h3>
+					<p>Enforce the verified decision.</p>
+				</li>
+			</ol>
+		</section>
+
+		<section class="scope hub" id="example" aria-labelledby="example-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Example — insurance claim authorisation</p><h2 id="example-title">Approving a claim, <em>proved</em><span>.</span></h2></div>
+				<p class="section-note">An autonomous system requests permission to approve an insurance claim. The applicable policy requires verified identity, valid delegated authority and an approval limit of $5,000.</p>
+			</div>
+
+			<div class="scope-group">
+				<div class="scope-head">
+					<span class="scope-tag">Lean 4 policy</span>
+					<h3>The policy as a proposition.</h3>
+					<p><code class="inline">authorised r</code> holds only when all four conditions hold together.</p>
+					<p>The examples are illustrative and have not been executed through the Lean compiler.</p>
+				</div>
+				<div class="code-wrap">
+					<figure class="code-panel">
+						<figcaption class="code-head"><span>policy.lean · Lean 4</span><span>Illustrative</span></figcaption>
+<pre tabindex="0" aria-label="Lean 4 policy"><code><span class="o">structure</span> Request <span class="o">where</span>
+  identityVerified : <span class="k">Bool</span>
+  authorityValid : <span class="k">Bool</span>
+  revoked : <span class="k">Bool</span>
+  amount : <span class="k">Nat</span>
+  limit : <span class="k">Nat</span>
+
+<span class="o">def</span> authorised (r : Request) : <span class="k">Prop</span> :=
+  r.identityVerified = <span class="n">true</span> <span class="o">∧</span>
+  r.authorityValid = <span class="n">true</span> <span class="o">∧</span>
+  r.revoked = <span class="n">false</span> <span class="o">∧</span>
+  r.amount <span class="o">≤</span> r.limit</code></pre>
+					</figure>
+				</div>
+			</div>
+
+			<div class="scope-group accent">
+				<div class="scope-head">
+					<span class="scope-tag">Theorem</span>
+					<h3>Approval limits cannot be <em>exceeded</em>.</h3>
+					<p>Any request that satisfies the policy has an amount within its limit: the fourth conjunct of <code class="inline">authorised r</code>.</p>
+				</div>
+				<div class="code-wrap">
+					<figure class="code-panel">
+						<figcaption class="code-head keep"><span>no_excess_approval</span><span>∀ r</span></figcaption>
+<pre tabindex="0" aria-label="Theorem: no excess approval"><code><span class="o">theorem</span> no_excess_approval
+    (r : Request)
+    (h : authorised r) :
+    r.amount <span class="o">≤</span> r.limit := <span class="o">by</span>
+  <span class="o">exact</span> h.2.2.2</code></pre>
+					</figure>
+				</div>
+			</div>
+
+			<div class="scope-group accent">
+				<div class="scope-head">
+					<span class="scope-tag">Theorem</span>
+					<h3>Revoked authority cannot be <em>used</em>.</h3>
+					<p>Any request that satisfies the policy carries authority that has not been revoked: the third conjunct.</p>
+				</div>
+				<div class="code-wrap">
+					<figure class="code-panel">
+						<figcaption class="code-head keep"><span>no_revoked_authority</span><span>∀ r</span></figcaption>
+<pre tabindex="0" aria-label="Theorem: no revoked authority"><code><span class="o">theorem</span> no_revoked_authority
+    (r : Request)
+    (h : authorised r) :
+    r.revoked = <span class="n">false</span> := <span class="o">by</span>
+  <span class="o">exact</span> h.2.2.1</code></pre>
+					</figure>
+				</div>
+			</div>
+			<p class="shift-foot">These theorems establish properties of the formal policy for all possible inputs, rather than merely testing selected scenarios.</p>
+		</section>
+
+		<section class="scope hub" id="model" aria-labelledby="model-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Interactive authorisation model</p><h2 id="model-title">Insurance approval <em>policy</em><span>.</span></h2></div>
+				<p class="section-note">Change the claim, the delegated limit or the evidence, and the decision follows. Every condition is one conjunct of <code class="inline">authorised r</code>.</p>
+			</div>
+			<div class="model">
+				<form class="model-in" id="m-form" novalidate>
+					<p class="eyebrow">Request</p>
+					<div class="sim-field">
+						<label for="m-amount">Claim amount (AUD)</label>
+						<div class="money"><span class="cur" aria-hidden="true">$</span><input id="m-amount" type="number" inputmode="numeric" min="0" step="100" value="3500" /></div>
+						<input id="m-range" class="range" type="range" min="0" max="12000" step="100" value="3500" aria-label="Claim amount slider" />
+					</div>
+					<fieldset>
+						<legend>Delegated approval limit</legend>
+						<div class="seg">
+							<label><input type="radio" name="m-limit" value="1000" /><span>$1,000</span></label>
+							<label><input type="radio" name="m-limit" value="5000" checked /><span>$5,000</span></label>
+							<label><input type="radio" name="m-limit" value="10000" /><span>$10,000</span></label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Evidence</legend>
+						<label class="toggle"><span>KERI identity verified</span><input id="m-idv" type="checkbox" role="switch" checked /></label>
+						<label class="toggle"><span>ACDC authority valid</span><input id="m-auth" type="checkbox" role="switch" checked /></label>
+						<label class="toggle"><span>Authority revoked</span><input id="m-rev" type="checkbox" role="switch" /></label>
+					</fieldset>
+					<button type="button" class="button ghost" id="m-reset">Reset to the example</button>
+				</form>
+				<div class="sim-out model-out" aria-live="polite">
+					<p class="eyebrow">Decision</p>
+					<p class="verdict" id="m-verdict">Permitted</p>
+					<p class="verdict-why" id="m-why">All four conditions hold, so authorised r is satisfied.</p>
+					<p class="eyebrow">AuthZEN response</p>
+					<pre class="sim-code"><code id="m-resp">{ "decision": true }</code></pre>
+					<p class="eyebrow checks-head">Conditions</p>
+					<ul class="checks">
+						<li class="check" id="c-idv"><span class="mark"><svg class="i-ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="i-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div><strong>Identity verified</strong><span class="check-state">holds</span><p>r.identityVerified = true</p></div></li>
+						<li class="check" id="c-auth"><span class="mark"><svg class="i-ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="i-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div><strong>Authority valid</strong><span class="check-state">holds</span><p>r.authorityValid = true</p></div></li>
+						<li class="check" id="c-rev"><span class="mark"><svg class="i-ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="i-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div><strong>Authority not revoked</strong><span class="check-state">holds</span><p>r.revoked = false</p></div></li>
+						<li class="check" id="c-lim"><span class="mark"><svg class="i-ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="i-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div><strong>Within approval limit</strong><span class="check-state">holds</span><p>r.amount ≤ r.limit · $3,500 ≤ $5,000</p></div></li>
+					</ul>
+					<p class="sim-note">Simulation of the policy semantics, not a live Lean proof engine.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="scope hub" id="guarantees" aria-labelledby="guarantees-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">What Lean could prove about an AuthZ system</p><h2 id="guarantees-title">Guarantees, not test <em>cases</em><span>.</span></h2></div>
+				<p class="section-note">These guarantees depend on correctly modelling the properties and ensuring the deployed implementation conforms to the verified model.</p>
+			</div>
+			<div class="scope-group accent">
+				<div class="scope-head">
+					<span class="scope-tag">Security properties</span>
+					<h3>Nine formal <em>guarantees</em>.</h3>
+					<p>Each property, once modelled, can be stated as a theorem about the decision function.</p>
+				</div>
+				<ul class="scope-list">
+					<li class="plain"><span class="scope-num">01</span><h4>Default deny</h4><p>No authority means no access.</p></li>
+					<li class="plain"><span class="scope-num">02</span><h4>Least privilege</h4><p>Access remains within granted scope.</p></li>
+					<li class="plain"><span class="scope-num">03</span><h4>Delegation safety</h4><p>Delegated authority cannot exceed parent authority.</p></li>
+					<li class="plain"><span class="scope-num">04</span><h4>Revocation</h4><p>Revoked credentials cannot authorise actions.</p></li>
+					<li class="plain"><span class="scope-num">05</span><h4>Temporal validity</h4><p>Expired authority cannot be exercised.</p></li>
+					<li class="plain"><span class="scope-num">06</span><h4>Tenant isolation</h4><p>Authority cannot cross unauthorised organisational boundaries.</p></li>
+					<li class="plain"><span class="scope-num">07</span><h4>Separation of duties</h4><p>An entity cannot perform conflicting roles.</p></li>
+					<li class="plain"><span class="scope-num">08</span><h4>Determinism</h4><p>Identical inputs and policy produce identical decisions.</p></li>
+					<li class="plain wide"><span class="scope-num">09</span><h4>Policy consistency</h4><p>Defined classes of contradictory rules are prevented.</p></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="scope hub" id="levels" aria-labelledby="levels-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Two levels of formal verification</p><h2 id="levels-title">Verify the engine, then the <em>decision</em><span>.</span></h2></div>
+				<p class="section-note">AuthZEN does not currently require such proofs. Level 2 would be a proposed extension or companion protocol.</p>
+			</div>
+			<div class="shift levels">
+				<div class="shift-card from">
+					<p class="shift-label">Level 1</p>
+					<p class="shift-q">Verified authorisation engine</p>
+					<p class="shift-body">Use Lean during development to prove properties of the decision engine. Execute the verified decision function at runtime.</p>
+				</div>
+				<div class="shift-card to">
+					<p class="shift-label">Level 2</p>
+					<p class="shift-q">Proof-carrying <em>authorisation</em></p>
+					<p class="shift-body">Produce a machine-checkable proof for an individual authorisation decision, bound to the request, credential evidence, policy version and context.</p>
+				</div>
+			</div>
+			<p class="shift-foot">This could allow another system to independently verify not only who authorised an action, but why that action was permitted.</p>
+		</section>
+
+		<section class="scope hub" id="opportunity" aria-labelledby="opportunity-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">The broader opportunity</p><h2 id="opportunity-title">Proof-carrying <em>authorisation</em><span>.</span></h2></div>
+				<p class="section-note">For the selfdriven and entityOS architecture, this establishes four distinct layers of trust.</p>
+			</div>
+			<div class="scope-group">
+				<div class="scope-head">
+					<span class="scope-tag">Four layers of trust</span>
+					<h3>Where each kind of truth comes from.</h3>
+					<p>Each layer answers a different question, and none can stand in for another.</p>
+				</div>
+				<ul class="scope-list">
+					<li class="plain"><span class="scope-num">Cryptographic truth</span><h4>KERI + ACDC</h4></li>
+					<li class="plain"><span class="scope-num">Contextual truth</span><h4>Verified Context Graphs</h4></li>
+					<li class="plain"><span class="scope-num">Logical truth</span><h4>Lean</h4></li>
+					<li class="plain"><span class="scope-num">Operational enforcement</span><h4>AuthZEN + entityOS Sentinel</h4></li>
+				</ul>
+			</div>
+			<div class="shift">
+				<div class="shift-card from">
+					<p class="shift-label">Lean cannot establish</p>
+					<p class="shift-q">Whether a real-world claim is truthful, or whether a credential issuer is trustworthy.</p>
+				</div>
+				<div class="shift-card to">
+					<p class="shift-label">Lean can establish</p>
+					<p class="shift-q">That a decision <em>logically follows</em> from the accepted evidence and formal rules.</p>
+				</div>
+			</div>
+			<p class="shift-foot">The opportunity is Proof-Carrying Authorisation (PCA): an architecture where authority is not merely asserted, but demonstrated through cryptographic evidence and formally verified reasoning.</p>
+		</section>
+
+		<section class="scope hub" id="references" aria-labelledby="references-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">References</p><h2 id="references-title">Standards and <em>tools</em><span>.</span></h2></div>
+				<p class="section-note">The AuthZEN Authorization API 1.0 was approved as an OpenID Final Specification in January 2026.</p>
+			</div>
+			<div class="scope-group">
+				<div class="scope-head">
+					<span class="scope-tag">Sources</span>
+					<h3>Where to go deeper.</h3>
+					<p>The specification, the prover and the architecture this page builds on.</p>
+				</div>
+				<ul class="scope-list link-list">
+					<li><a class="link-row" href="https://openid.net/specs/authorization-api-1_0-final.html"><span><span class="scope-num">OpenID Foundation</span><strong>AuthZEN Authorization API 1.0</strong><small>Subject, action, resource, context and decision.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://lean-lang.org/"><span><span class="scope-num">Lean</span><strong>Lean language</strong><small>Programming language and theorem prover.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="https://lean-lang.org/theorem_proving_in_lean4/Propositions-and-Proofs/"><span><span class="scope-num">Theorem Proving in Lean 4</span><strong>Propositions and proofs</strong><small>Propositions as types, proofs as terms.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+					<li><a class="link-row" href="/ssi/keri/authz"><span><span class="scope-num">selfdriven.id</span><strong>KERI &amp; AuthZ</strong><small>The authority architecture this page builds on.</small></span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="custom-banner" id="connect">
+			<div><p class="eyebrow">selfdriven Foundation · Build</p><h2>Authority, demonstrated rather than asserted.</h2></div>
+			<div class="banner-copy"><p>Particularly relevant for autonomous silicon intelligence operating with delegated human and organisational authority.</p><a class="button light" href="/ssi/keri/authz">KERI &amp; AuthZ <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+		</section>
+	</main>
+
+<footer class="footer">
+	<div class="footer-left">
+		<div class="nav-brand">selfdriven<span>.id</span></div>
+		<p>Helping communities self-actuate on trustable identification and associated identities. For all entity-substrates, organic and inorganic.</p>
+	</div>
+	<div class="footer-cols">
+		<div>
+			<p class="footer-head">Identity</p>
+			<a href="/ssi/">SSI methods</a>
+			<a href="/ssi/keri/">SSI &amp; KERI</a>
+			<a href="/ssi/keri/authz">KERI &amp; AuthZ</a>
+			<a href="/ssi/keri/authz/lean">AuthZ &amp; Lean</a>
+			<a href="/vlei">vLEI</a>
+			<a href="https://selfdriven.fyi/identity" target="_blank" rel="noopener">selfdriven.fyi/identity</a>
+			<a href="https://selfdriven.fyi/trust" target="_blank" rel="noopener">selfdriven.fyi/trust</a>
+		</div>
+		<div>
+			<p class="footer-head">Research</p>
+			<a href="/research/id-primitives-for-human-rooted-agency">Human-rooted agency</a>
+			<a href="/framework/digital-interaction">Digital Interaction Framework</a>
+		</div>
+		<div>
+			<p class="footer-head">selfdriven</p>
+			<a href="https://selfdriven.foundation" target="_blank" rel="noopener">Foundation</a>
+			<a href="https://selfdriven.network" target="_blank" rel="noopener">Network</a>
+			<a href="https://selfdriven.tech" target="_blank" rel="noopener">Tech</a>
+			<a href="https://selfdriven.ai" target="_blank" rel="noopener">AI</a>
+		</div>
+	</div>
+	<div class="footer-line">Without a shared identification system, you can't have shareable identity. Without shareable identities, you can't have shared trust.</div>
+</footer>
+
+<script>
+{
+	const $ = id => document.getElementById(id);
+	const form = $('m-form'), amount = $('m-amount'), range = $('m-range');
+	const money = n => '$' + n.toLocaleString('en-AU');
+	const read = () => {
+		let a = parseInt(amount.value, 10);
+		if (!Number.isFinite(a) || a < 0) a = 0;
+		const sel = form.querySelector('input[name="m-limit"]:checked');
+		return { idv: $('m-idv').checked, auth: $('m-auth').checked, rev: $('m-rev').checked, amount: a, limit: sel ? parseInt(sel.value, 10) : 0 };
+	};
+	const render = () => {
+		const r = read();
+		const within = r.amount <= r.limit;
+		const rows = [
+			['c-idv', r.idv, 'r.identityVerified = ' + r.idv],
+			['c-auth', r.auth, 'r.authorityValid = ' + r.auth],
+			['c-rev', !r.rev, 'r.revoked = ' + r.rev],
+			['c-lim', within, 'r.amount ≤ r.limit · ' + money(r.amount) + (within ? ' ≤ ' : ' > ') + money(r.limit)]
+		];
+		let fails = 0;
+		for (const [id, ok, detail] of rows) {
+			const el = $(id);
+			el.classList.toggle('fail', !ok);
+			el.querySelector('.check-state').textContent = ok ? 'holds' : 'fails';
+			el.querySelector('p').textContent = detail;
+			if (!ok) fails++;
+		}
+		const permitted = fails === 0;
+		const v = $('m-verdict');
+		v.textContent = permitted ? 'Permitted' : 'Denied';
+		v.classList.toggle('deny', !permitted);
+		$('m-why').textContent = permitted
+			? 'All four conditions hold, so authorised r is satisfied.'
+			: (fails === 1 ? 'One condition fails, so the request is denied by default.' : ['', '', 'Two', 'Three', 'Four'][fails] + ' conditions fail, so the request is denied by default.');
+		$('m-resp').textContent = '{ "decision": ' + permitted + ' }';
+	};
+	amount.addEventListener('input', () => {
+		const v = parseInt(amount.value, 10);
+		if (Number.isFinite(v)) range.value = Math.min(Math.max(v, 0), Number(range.max));
+		render();
+	});
+	range.addEventListener('input', () => { amount.value = range.value; render(); });
+	form.addEventListener('change', render);
+	form.addEventListener('submit', e => e.preventDefault());
+	$('m-reset').addEventListener('click', () => {
+		amount.value = 3500; range.value = 3500;
+		form.querySelector('input[name="m-limit"][value="5000"]').checked = true;
+		$('m-idv').checked = true; $('m-auth').checked = true; $('m-rev').checked = false;
+		render();
+	});
+	render();
+}
+</script>
+</body>
+</html>
