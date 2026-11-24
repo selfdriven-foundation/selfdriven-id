@@ -1,12 +1,18 @@
 ---
 layout: selfdriven
-title: Identity primitives for human-rooted agency in Octomics | selfdriven ID
+title: Identity primitives for human-rooted agency in Octomics — selfdriven.id
+description: "selfoid → octoid: a human anchor that generates bounded, proof-linked identity representations."
 permalink: /research/id-primitives-for-human-rooted-agency
+toc: true
+crumb: Research
+crumb_url: /#research
+next_url: /framework/digital-interaction
+next_title: Digital Interaction Framework
 ---
 
-# Identity Primitives for Human-Rooted Agency in Octomics
+# Identity primitives for <em>human-rooted</em> agency in Octomics
 
-**selfoid → octoid**  
+**selfoid → octoid**
 
 octomics treats identity as *generated structure*, not a static label.
 
@@ -50,7 +56,7 @@ A **selfoid** is the base identity object for a human.
 
 Properties:
 - **Non-transferable by design** (it represents the human, not a device)
-- **Intent-bearing** (it’s where “I authorize” originates)
+- **Intent-bearing** (it’s where “I authorise” originates)
 - **Accountability-bearing** (it’s where responsibility terminates)
 - **Generative** (it can derive identities without leaking itself)
 
@@ -100,7 +106,7 @@ Generation is stronger than “linking accounts” because:
 - it reduces the blast radius of compromise.
 
 ## 4. Octoid taxonomy (practical types)
-Octoids can be categorized by *what they represent*.
+Octoids can be categorised by *what they represent*.
 
 ### 4.1 Role Octoid
 Represents a role the human can perform.
@@ -175,7 +181,7 @@ The selfoid carries human accountability, but octoids prevent casual correlation
 ### 6.2 Escalation (dispute, fraud, safety, compliance)
 - policies define when escalation is allowed
 - escalation reveals **only what is necessary**
-- “prove you are authorized” beats “show me who you are”
+- “prove you are authorised” beats “show me who you are”
 
 This is how Octomics avoids two failure modes:
 - **total anonymity** (no accountability)
@@ -256,7 +262,7 @@ One identifier is reused everywhere → correlation and over-permission.
 
 ### With Selfoid→Octoid
 - Governance Octoid signs votes, reveals only eligibility proof.
-- Claims Delegation Octoid authorizes an AI tool to extract documents, but cannot submit payments.
+- Claims Delegation Octoid authorises an AI tool to extract documents, but cannot submit payments.
 - Artifact Octoid signs the publication provenance; later, a proof links it to the selfoid only if required.
 
 The human stays the source of truth.
@@ -283,7 +289,7 @@ Each context stays bounded.
 - scoped capability set
 - expiry + rotation policy
 - revocation handle
-- proof method: derivation / membership / authorization (selective disclosure)
+- proof method: derivation / membership / authorisation (selective disclosure)
 
 **Events**
 - signed by *octoid*

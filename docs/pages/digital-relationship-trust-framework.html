@@ -1,1063 +1,397 @@
 ---
 layout: null
-title:  Digital Relationship Trust Framework | selfdriven ID
+title: Digital Relationship Trust Framework — selfdriven.id
 permalink: /framework/digital-relationship-trust
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>selfdriven — Digital Relationship Trust Framework</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ── Design Tokens ── */
-:root {
-  --bg: #ffffff;
-  --surface: #f6f5f7;
-  --surface2: #eeecef;
-  --border: #e6e3e7;
-  --text: #24202a;
-  --muted: #625c65;
-  --muted2: #8d8690;
-  --accent: #de5a31;
-  --accent-dim: rgba(222, 90, 49, 0.10);
-  --accent-strong: rgba(222, 90, 49, 0.18);
-  --card-radius: 12px;
-  --shadow: 0 2px 16px rgba(0,0,0,0.07);
-  --glow: 0 0 40px rgba(222, 90, 49, 0.15);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141217;
-    --surface: #1c1a20;
-    --surface2: #24212a;
-    --border: #2e2a33;
-    --text: #f1eef3;
-    --muted: #b3acb7;
-    --muted2: #7f7884;
-    --accent: #e8673f;
-    --accent-dim: rgba(232, 103, 63, 0.12);
-    --accent-strong: rgba(232, 103, 63, 0.20);
-    --shadow: 0 2px 16px rgba(0,0,0,0.4);
-    --glow: 0 0 40px rgba(232, 103, 63, 0.2);
-  }
-}
-
-/* ── Reset & Base ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ── Nav ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 16px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: transparent;
-  transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
-}
-nav.scrolled {
-  background: rgba(245, 242, 237, 0.85);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 var(--border);
-}
-@media (prefers-color-scheme: dark) {
-  nav.scrolled { background: rgba(10, 10, 10, 0.85); }
-}
-.nav-brand {
-  font-weight: 800; font-size: 18px; letter-spacing: -0.04em;
-  color: var(--accent);
-}
-.nav-brand span { color: var(--text); font-weight: 400; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a {
-  text-decoration: none; color: var(--muted); font-size: 13px;
-  font-weight: 500; letter-spacing: 0.02em;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: var(--accent); }
-
-/* ── Hero ── */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center;
-  padding: 120px 40px 80px;
-  position: relative;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    radial-gradient(ellipse 800px 600px at 30% 20%, var(--accent-dim), transparent),
-    radial-gradient(ellipse 600px 400px at 70% 70%, var(--accent-dim), transparent);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent);
-  margin-bottom: 24px;
-  opacity: 0; transform: translateY(20px);
-  animation: fadeUp 0.8s 0.2s forwards;
-}
-.hero h1 {
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.05;
-  max-width: 900px;
-  opacity: 0; transform: translateY(30px);
-  animation: fadeUp 0.8s 0.4s forwards;
-}
-.hero h1 em {
-  font-style: normal; color: var(--accent);
-  position: relative;
-}
-.hero-sub {
-  font-size: 18px; color: var(--muted); max-width: 640px;
-  margin-top: 28px; font-weight: 400; line-height: 1.7;
-  opacity: 0; transform: translateY(20px);
-  animation: fadeUp 0.8s 0.6s forwards;
-}
-.hero-cta {
-  display: flex; gap: 16px; margin-top: 48px;
-  opacity: 0; transform: translateY(20px);
-  animation: fadeUp 0.8s 0.8s forwards;
-}
-.btn-primary {
-  background: var(--accent); color: #fff;
-  border: none; border-radius: 999px;
-  padding: 14px 36px; font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--glow); }
-.btn-outline {
-  background: transparent; color: var(--text);
-  border: 1.5px solid var(--border); border-radius: 999px;
-  padding: 14px 36px; font-family: 'DM Sans','Helvetica Neue',Arial,sans-serif; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: border-color 0.3s;
-}
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ── Section Base ── */
-section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-.section-eyebrow {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent);
-  margin-bottom: 16px;
-}
-.section-title {
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 800; letter-spacing: -0.03em;
-  margin-bottom: 16px;
-}
-.section-desc {
-  font-size: 16px; color: var(--muted); max-width: 640px;
-  line-height: 1.7; margin-bottom: 56px;
-}
-
-/* ── Stack Diagram ── */
-.stack-container {
-  display: flex; flex-direction: column; gap: 0;
-  position: relative;
-}
-.stack-layer {
-  position: relative;
-  border: 1.5px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 32px 36px;
-  background: var(--surface);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-  margin-bottom: -1px;
-}
-.stack-layer::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.stack-layer:hover::before, .stack-layer.active::before { opacity: 1; }
-.stack-layer:hover, .stack-layer.active {
-  background: var(--bg);
-  box-shadow: var(--shadow);
-  z-index: 2;
-  transform: scale(1.01);
-}
-.stack-header {
-  display: flex; align-items: center; justify-content: space-between;
-}
-.stack-num {
-  font-family: ui-monospace; font-size: 12px; font-weight: 600;
-  color: var(--accent); background: var(--accent-dim);
-  padding: 4px 10px; border-radius: 8px;
-  margin-right: 16px;
-}
-.stack-label {
-  font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
-  flex: 1;
-}
-.stack-tag {
-  font-family: ui-monospace; font-size: 11px;
-  color: var(--muted); background: var(--surface2);
-  padding: 4px 12px; border-radius: 8px;
-}
-.stack-expand {
-  font-size: 20px; color: var(--muted);
-  transition: transform 0.3s, color 0.3s;
-  margin-left: 16px;
-}
-.stack-layer.active .stack-expand { transform: rotate(45deg); color: var(--accent); }
-.stack-detail {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s;
-  padding-top: 0;
-}
-.stack-layer.active .stack-detail {
-  max-height: 800px;
-  padding-top: 28px;
-}
-.stack-detail-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-}
-.detail-card {
-  background: var(--surface2);
-  border-radius: 14px;
-  padding: 20px 24px;
-  border: 1px solid var(--border);
-}
-.detail-card h4 {
-  font-size: 13px; font-weight: 700; margin-bottom: 8px;
-  color: var(--accent);
-}
-.detail-card p {
-  font-size: 13px; color: var(--muted); line-height: 1.6;
-}
-.detail-card code {
-  font-family: ui-monospace; font-size: 11px;
-  background: var(--accent-dim); color: var(--accent);
-  padding: 2px 6px; border-radius: 4px;
-}
-
-/* ── Relationship Lifecycle ── */
-.lifecycle-track {
-  display: flex; align-items: center; gap: 0;
-  margin: 48px 0;
-  position: relative;
-  overflow-x: auto;
-  padding: 20px 0;
-}
-.lifecycle-node {
-  display: flex; flex-direction: column; align-items: center;
-  min-width: 160px; flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-}
-.lifecycle-dot {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 2.5px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-family: ui-monospace; font-size: 13px; font-weight: 600;
-  color: var(--accent);
-  transition: all 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-.lifecycle-dot::after {
-  content: '';
-  position: absolute;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  opacity: 0;
-  transform: scale(1.4);
-  transition: all 0.4s;
-}
-.lifecycle-node:hover .lifecycle-dot {
-  border-color: var(--accent);
-  background: var(--accent-dim);
-  transform: scale(1.1);
-}
-.lifecycle-node:hover .lifecycle-dot::after {
-  opacity: 0.3;
-  animation: pulseRing 1.5s infinite;
-}
-.lifecycle-label {
-  margin-top: 14px; font-size: 13px; font-weight: 600;
-  color: var(--text); text-align: center;
-}
-.lifecycle-sub {
-  font-size: 11px; color: var(--muted); text-align: center;
-  margin-top: 4px; max-width: 140px;
-}
-.lifecycle-arrow {
-  width: 60px; height: 2px;
-  background: linear-gradient(90deg, var(--border), var(--accent), var(--border));
-  flex-shrink: 0;
-  position: relative;
-}
-.lifecycle-arrow::after {
-  content: '→';
-  position: absolute; right: -8px; top: -10px;
-  color: var(--accent); font-size: 16px;
-}
-
-/* ── Network Viz ── */
-.network-section {
-  padding: 100px 40px;
-  background: var(--text);
-  margin: 0;
-  max-width: none;
-}
-@media (prefers-color-scheme: dark) {
-  .network-section { background: #1f1c23; }
-}
-.network-section .section-eyebrow { color: var(--accent); }
-.network-section .section-title { color: var(--bg); }
-@media (prefers-color-scheme: dark) {
-  .network-section .section-title { color: var(--text); }
-}
-.network-section .section-desc { color: #8d8690; }
-.network-inner { max-width: 1200px; margin: 0 auto; }
-.network-canvas-wrap {
-  position: relative;
-  height: 400px;
-  margin: 40px 0;
-}
-#networkCanvas {
-  width: 100%; height: 100%;
-  border-radius: var(--card-radius);
-  background: rgba(0,0,0,0.2);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.network-legend {
-  display: flex; gap: 32px; flex-wrap: wrap;
-  margin-top: 24px;
-}
-.legend-item {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 500;
-}
-@media (prefers-color-scheme: dark) {
-  .legend-item { color: var(--muted); }
-}
-@media (prefers-color-scheme: light) {
-  .legend-item { color: #8d8690; }
-}
-.legend-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-}
-
-/* ── Policy Grid ── */
-.policy-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-.policy-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 28px 24px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.policy-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-.policy-card:hover::before { transform: scaleX(1); }
-.policy-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
-.policy-icon {
-  width: 44px; height: 44px;
-  background: var(--accent-dim);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-.policy-card h3 {
-  font-size: 16px; font-weight: 700;
-  margin-bottom: 8px;
-}
-.policy-card p {
-  font-size: 13px; color: var(--muted); line-height: 1.6;
-}
-.policy-items {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 14px;
-}
-.policy-tag {
-  font-family: ui-monospace; font-size: 10px;
-  background: var(--surface2); color: var(--muted);
-  padding: 3px 10px; border-radius: 6px;
-  border: 1px solid var(--border);
-}
-
-/* ── Governance Grid ── */
-.gov-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  margin-top: 40px;
-}
-.gov-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 28px 24px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.gov-card:hover { box-shadow: var(--shadow); border-color: var(--accent); }
-.gov-card .gov-icon {
-  font-size: 28px; margin-bottom: 14px;
-}
-.gov-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.gov-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-.gov-tech {
-  font-family: ui-monospace; font-size: 11px;
-  color: var(--accent); margin-top: 12px;
-  display: inline-block;
-  background: var(--accent-dim);
-  padding: 3px 10px; border-radius: 6px;
-}
-
-/* ── Risk Balance ── */
-.risk-balance {
-  display: flex; align-items: center; gap: 40px;
-  margin-top: 40px;
-  padding: 40px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-}
-.risk-slider-wrap { flex: 1; }
-.risk-slider-label {
-  display: flex; justify-content: space-between;
-  font-size: 12px; font-weight: 600; color: var(--muted);
-  margin-bottom: 12px;
-}
-.risk-slider {
-  width: 100%; height: 8px;
-  -webkit-appearance: none;
-  background: linear-gradient(90deg, #286647, #de5a31);
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-}
-.risk-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 24px; height: 24px;
-  background: var(--text);
-  border: 3px solid var(--accent);
-  border-radius: 50%;
-  cursor: grab;
-}
-.risk-output {
-  min-width: 200px;
-  text-align: center;
-}
-.risk-output .risk-val {
-  font-size: 48px; font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--accent);
-}
-.risk-output .risk-desc {
-  font-size: 13px; color: var(--muted);
-  margin-top: 4px;
-}
-
-/* ── Footer ── */
-footer {
-  padding: 60px 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-footer p { font-size: 13px; color: var(--muted); }
-footer .footer-brand {
-  font-weight: 800; color: var(--accent);
-}
-footer .footer-links {
-  display: flex; justify-content: center; gap: 24px;
-  margin-top: 16px; list-style: none;
-}
-footer .footer-links a {
-  text-decoration: none; font-size: 12px; color: var(--muted);
-  font-weight: 500; transition: color 0.3s;
-}
-footer .footer-links a:hover { color: var(--accent); }
-
-/* ── Animations ── */
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulseRing {
-  0% { transform: scale(1.4); opacity: 0.3; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.7s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .stack-detail-inner { grid-template-columns: 1fr; }
-  .policy-grid { grid-template-columns: repeat(2, 1fr); }
-  .gov-grid { grid-template-columns: repeat(2, 1fr); }
-  .risk-balance { flex-direction: column; }
-  nav { padding: 12px 20px; }
-  .nav-links { display: none; }
-  section { padding: 60px 20px; }
-}
-@media (max-width: 600px) {
-  .policy-grid { grid-template-columns: 1fr; }
-  .gov-grid { grid-template-columns: 1fr; }
-  .lifecycle-track { flex-wrap: wrap; justify-content: center; }
-  .lifecycle-arrow { width: 30px; }
-}
-
-/* selfdriven.tech look: display headings in Space Grotesk */
-.hero h1,.section-title,.subsection-title,.layer-name,.stage-detail-title,.tier-card-title,.proto-name,.policy-title,.matrix-title,.stack-label,.gov-card h4,.policy-card h3,.detail-card h4,.layer-stack .layer-name{font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif;letter-spacing:-.03em}
-</style>
+	<meta charset="UTF-8" />
+	<title>Digital Relationship Trust Framework — selfdriven.id</title>
+	<meta name="description" content="A layered architecture for digital relationships — from ephemeral transactions to enduring partnerships — grounded in cryptographic identity, verifiable provenance, and human governance." />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<link rel="shortcut icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png">
+	<link rel="apple-touch-icon" href="/assets/img/selfdriven-logo-round-blackcurrant-flamingo.png" />
+	<meta property="og:title" content="Digital Relationship Trust Framework — selfdriven.id" />
+	<meta property="og:description" content="Building trust in every digital interaction: the trust stack, the relationship lifecycle, policy stacks, governance and risk calibration." />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- ── Nav ── -->
-<nav id="nav">
-  <div class="nav-brand">selfdriven<span>.foundation</span></div>
-  <ul class="nav-links">
-    <li><a href="#stack">Trust Stack</a></li>
-    <li><a href="#lifecycle">Lifecycle</a></li>
-    <li><a href="#network">Network</a></li>
-    <li><a href="#policy">Policy</a></li>
-    <li><a href="#governance">Governance</a></li>
-    <li><a href="#risk">Risk</a></li>
-  </ul>
-</nav>
+<header class="header">
+	<a class="logo" href="/" aria-label="selfdriven ID home">
+		<img class="logo-id" src="data:image/png;base64,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" alt="selfdriven" />
+	</a>
+	<nav class="nav" aria-label="Primary">
+		<a href="#stack">Trust stack</a>
+		<a href="#lifecycle">Lifecycle</a>
+		<a href="#network">Network</a>
+		<a href="#policy">Policy</a>
+		<a href="#governance">Governance</a>
+		<a href="#risk">Risk</a>
+	</nav>
+</header>
 
-<!-- ── Hero ── -->
-<div class="hero">
-  <div class="hero-eyebrow">Digital Relationship Trust Framework</div>
-  <h1>Building <em>Trust</em> in Every Digital <em>Interaction</em></h1>
-  <p class="hero-sub">A layered architecture for digital relationships — from ephemeral transactions to enduring partnerships — grounded in cryptographic identity, verifiable provenance, and human governance.</p>
-  <div class="hero-cta">
-    <button class="btn-primary" onclick="document.getElementById('stack').scrollIntoView({behavior:'smooth'})">Explore the Stack</button>
-    <button class="btn-outline" onclick="document.getElementById('governance').scrollIntoView({behavior:'smooth'})">Governance →</button>
-  </div>
-</div>
+	<main class="main-content fw" id="main">
 
-<!-- ── Trust Stack ── -->
-<section id="stack">
-  <div class="section-eyebrow reveal">Trust Architecture</div>
-  <h2 class="section-title reveal">The Trust Stack</h2>
-  <p class="section-desc reveal">Every digital relationship rests on layered foundations. Click each layer to explore how technology, fidelity, and governance compose into trustworthy interactions.</p>
+		<section class="hero" id="top">
+			<div class="hero-copy">
+				<p class="eyebrow">selfdriven · ID · Digital Relationship Trust Framework</p>
+				<h1>Building trust in every digital <em>interaction</em><span>.</span></h1>
+				<p class="intro">A layered architecture for digital relationships — from ephemeral transactions to enduring partnerships — grounded in cryptographic identity, verifiable provenance, and human governance.</p>
+				<a class="button" href="#stack">Explore the stack <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+				<a class="text-link" href="#governance">Or go straight to governance</a>
+			</div>
+			<div class="hero-media">
+				<a class="hero-art" href="#network">
+					<span class="ward" aria-hidden="true">
+						<svg viewBox="0 0 600 470" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" focusable="false">
+							<rect width="600" height="470" style="fill:var(--panel)"/>
+							<line class="grid-line" x1="0" y1="0" x2="0" y2="470"/><line class="grid-line" x1="30" y1="0" x2="30" y2="470"/><line class="grid-line" x1="60" y1="0" x2="60" y2="470"/><line class="grid-line" x1="90" y1="0" x2="90" y2="470"/><line class="grid-line" x1="120" y1="0" x2="120" y2="470"/><line class="grid-line" x1="150" y1="0" x2="150" y2="470"/><line class="grid-line" x1="180" y1="0" x2="180" y2="470"/><line class="grid-line" x1="210" y1="0" x2="210" y2="470"/><line class="grid-line" x1="240" y1="0" x2="240" y2="470"/><line class="grid-line" x1="270" y1="0" x2="270" y2="470"/><line class="grid-line" x1="300" y1="0" x2="300" y2="470"/><line class="grid-line" x1="330" y1="0" x2="330" y2="470"/><line class="grid-line" x1="360" y1="0" x2="360" y2="470"/><line class="grid-line" x1="390" y1="0" x2="390" y2="470"/><line class="grid-line" x1="420" y1="0" x2="420" y2="470"/><line class="grid-line" x1="450" y1="0" x2="450" y2="470"/><line class="grid-line" x1="480" y1="0" x2="480" y2="470"/><line class="grid-line" x1="510" y1="0" x2="510" y2="470"/><line class="grid-line" x1="540" y1="0" x2="540" y2="470"/><line class="grid-line" x1="570" y1="0" x2="570" y2="470"/><line class="grid-line" x1="600" y1="0" x2="600" y2="470"/><line class="grid-line" x1="0" y1="0" x2="600" y2="0"/><line class="grid-line" x1="0" y1="30" x2="600" y2="30"/><line class="grid-line" x1="0" y1="60" x2="600" y2="60"/><line class="grid-line" x1="0" y1="90" x2="600" y2="90"/><line class="grid-line" x1="0" y1="120" x2="600" y2="120"/><line class="grid-line" x1="0" y1="150" x2="600" y2="150"/><line class="grid-line" x1="0" y1="180" x2="600" y2="180"/><line class="grid-line" x1="0" y1="210" x2="600" y2="210"/><line class="grid-line" x1="0" y1="240" x2="600" y2="240"/><line class="grid-line" x1="0" y1="270" x2="600" y2="270"/><line class="grid-line" x1="0" y1="300" x2="600" y2="300"/><line class="grid-line" x1="0" y1="330" x2="600" y2="330"/><line class="grid-line" x1="0" y1="360" x2="600" y2="360"/><line class="grid-line" x1="0" y1="390" x2="600" y2="390"/><line class="grid-line" x1="0" y1="420" x2="600" y2="420"/><line class="grid-line" x1="0" y1="450" x2="600" y2="450"/>
+							<text class="readout-label" x="110" y="118">LAYERS</text>
+							<text class="readout" x="110" y="160" font-size="44" font-weight="600">5</text>
+							<text class="readout-label" x="280" y="118">PHASES</text>
+							<text class="readout" x="280" y="160" font-size="44" font-weight="600">5</text>
+							<text class="readout-label" x="448" y="118">POLICY</text>
+							<text class="readout" x="448" y="160" font-size="44" font-weight="600">4</text>
+							<path class="kel-link" fill="none" d="M200,250 L118,212 M200,350 L118,388 M400,350 L482,388 M200,250 L200,350 M400,250 L400,350"/>
+							<path class="receipt" d="M300,300 L200,250 M300,300 L200,350 M300,300 L400,350"/>
+							<path class="trace-glow" d="M300,300 L400,250 L482,212"/>
+							<path class="trace" d="M300,300 L400,250 L482,212"/>
+							<rect class="os-core" x="240" y="283" width="120" height="34" rx="6"/>
+							<circle class="pulse" cx="258" cy="300" r="5"/>
+							<text class="os-core-label" x="272" y="304">you · AID</text>
+							<circle class="kel-node anchored" cx="200" cy="250" r="8"/>
+							<circle class="kel-node latest" cx="400" cy="250" r="8"/>
+							<circle class="kel-node anchored" cx="200" cy="350" r="8"/>
+							<circle class="kel-node anchored" cx="400" cy="350" r="8"/>
+							<circle class="kel-node" cx="118" cy="212" r="6"/>
+							<circle class="kel-node" cx="118" cy="388" r="6"/>
+							<circle class="kel-node anchored" cx="482" cy="212" r="6"/>
+							<circle class="kel-node" cx="482" cy="388" r="6"/>
+							<text class="kel-tag" x="200" y="232" text-anchor="middle">tier 1</text>
+							<text class="kel-tag" x="118" y="194" text-anchor="middle">tier 2</text>
+							<text class="kel-tag" x="490" y="194" text-anchor="end">propagated</text>
+						</svg>
+					</span>
+					<span class="art-label">SELFDRIVEN / RELATIONSHIP TRUST</span>
+					<span class="art-foot">Trust held in direct relationships, propagated across the network. <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span>
+				</a>
+			</div>
+		</section>
 
-  <div class="stack-container">
+		<!-- ═══ Trust stack ═══ -->
+		<section class="scope hub" id="stack" aria-labelledby="stack-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Trust architecture</p><h2 id="stack-title">The trust <em>stack</em><span>.</span></h2></div>
+				<p class="section-note">Every digital relationship rests on layered foundations. Click each layer to explore how technology, fidelity, and governance compose into trustworthy interactions.</p>
+			</div>
 
-    <div class="stack-layer reveal" onclick="toggleStack(this)">
-      <div class="stack-header">
-        <span class="stack-num">01</span>
-        <span class="stack-label">Digital Interaction</span>
-        <span class="stack-tag">RELATIONSHIP</span>
-        <span class="stack-expand">+</span>
-      </div>
-      <div class="stack-detail">
-        <div class="stack-detail-inner">
-          <div class="detail-card">
-            <h4>Transactional vs Interactional</h4>
-            <p>Interactions range from single-use transactions (buy, verify, attest) to ongoing relational engagements (collaborate, co-create, govern). The trust requirements differ fundamentally.</p>
-          </div>
-          <div class="detail-card">
-            <h4>Utility · Shared Domain · Context · Activities</h4>
-            <p>Relationships form around shared utility and domain context. The <code>EWM</code> (Engagement-Witness-Mutual) pattern captures how parties discover shared activities and build context over time.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="fw-stack fw-stack-end">
+				<details class="fw-layer" name="stack">
+					<summary>
+						<span class="scope-tag">01 · Relationship</span>
+						<h3>Digital interaction</h3>
+						<span class="fw-layer-brief">Transactional vs Interactional · Utility · Shared Domain · Context · Activities</span>
+						<span class="fw-toggle"><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
+					</summary>
+					<div class="fw-layer-body">
+						<ul class="scope-list">
+							<li class="plain"><h4>Transactional vs Interactional</h4><p>Interactions range from single-use transactions (buy, verify, attest) to ongoing relational engagements (collaborate, co-create, govern). The trust requirements differ fundamentally.</p></li>
+							<li class="plain"><h4>Utility · Shared Domain · Context · Activities</h4><p>Relationships form around shared utility and domain context. The <code>EWM</code> (Engagement-Witness-Mutual) pattern captures how parties discover shared activities and build context over time.</p></li>
+						</ul>
+					</div>
+				</details>
 
-    <div class="stack-layer reveal" onclick="toggleStack(this)">
-      <div class="stack-header">
-        <span class="stack-num">02</span>
-        <span class="stack-label">Assurance & Confidence</span>
-        <span class="stack-tag">FIDELITY</span>
-        <span class="stack-expand">+</span>
-      </div>
-      <div class="stack-detail">
-        <div class="stack-detail-inner">
-          <div class="detail-card">
-            <h4>Trust as Level of Risk</h4>
-            <p>Trust is not binary — it's a dynamic confidence score derived from provenance, history, and verifiable credentials. Each interaction adjusts the assurance level.</p>
-          </div>
-          <div class="detail-card">
-            <h4>Provenance</h4>
-            <p>Every claim traces back to its origin through <code>KEL</code> (Key Event Log) entries and <code>VC</code> (Verifiable Credentials), providing cryptographic proof of authenticity and chain of custody.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+				<details class="fw-layer" name="stack">
+					<summary>
+						<span class="scope-tag">02 · Fidelity</span>
+						<h3>Assurance &amp; confidence</h3>
+						<span class="fw-layer-brief">Trust as Level of Risk · Provenance</span>
+						<span class="fw-toggle"><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
+					</summary>
+					<div class="fw-layer-body">
+						<ul class="scope-list">
+							<li class="plain"><h4>Trust as Level of Risk</h4><p>Trust is not binary — it's a dynamic confidence score derived from provenance, history, and verifiable credentials. Each interaction adjusts the assurance level.</p></li>
+							<li class="plain"><h4>Provenance</h4><p>Every claim traces back to its origin through <code>KEL</code> (Key Event Log) entries and <code>VC</code> (Verifiable Credentials), providing cryptographic proof of authenticity and chain of custody.</p></li>
+						</ul>
+					</div>
+				</details>
 
-    <div class="stack-layer reveal" onclick="toggleStack(this)">
-      <div class="stack-header">
-        <span class="stack-num">03</span>
-        <span class="stack-label">Technology</span>
-        <span class="stack-tag">INFRASTRUCTURE</span>
-        <span class="stack-expand">+</span>
-      </div>
-      <div class="stack-detail">
-        <div class="stack-detail-inner">
-          <div class="detail-card">
-            <h4>Authentication & Encryption</h4>
-            <p>Foundation layer: AuthN, protocols, encryption, cryptographic primitives. No passwords — FIDO2 passkeys bound to <code>KERI</code> AIDs provide biometric-secured, phishing-resistant identity.</p>
-          </div>
-          <div class="detail-card">
-            <h4>Privacy & Path History</h4>
-            <p>Selective disclosure through ACDC credential chaining. Path history is captured in append-only key event logs, making every identity action auditable without compromising privacy.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+				<details class="fw-layer" name="stack">
+					<summary>
+						<span class="scope-tag">03 · Infrastructure</span>
+						<h3>Technology</h3>
+						<span class="fw-layer-brief">Authentication &amp; Encryption · Privacy &amp; Path History</span>
+						<span class="fw-toggle"><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
+					</summary>
+					<div class="fw-layer-body">
+						<ul class="scope-list">
+							<li class="plain"><h4>Authentication &amp; Encryption</h4><p>Foundation layer: AuthN, protocols, encryption, cryptographic primitives. No passwords — FIDO2 passkeys bound to <code>KERI</code> AIDs provide biometric-secured, phishing-resistant identity.</p></li>
+							<li class="plain"><h4>Privacy &amp; Path History</h4><p>Selective disclosure through ACDC credential chaining. Path history is captured in append-only key event logs, making every identity action auditable without compromising privacy.</p></li>
+						</ul>
+					</div>
+				</details>
 
-    <div class="stack-layer reveal" onclick="toggleStack(this)">
-      <div class="stack-header">
-        <span class="stack-num">04</span>
-        <span class="stack-label">Governance</span>
-        <span class="stack-tag">KERI · ACDC</span>
-        <span class="stack-expand">+</span>
-      </div>
-      <div class="stack-detail">
-        <div class="stack-detail-inner">
-          <div class="detail-card">
-            <h4>Key Event Infrastructure</h4>
-            <p>KERI provides the root-of-trust: self-certifying identifiers with pre-rotation, witnessed key events (<code>icp</code>, <code>rot</code>, <code>ixn</code>, <code>dip</code>, <code>drt</code>), and delegated authority chains.</p>
-          </div>
-          <div class="detail-card">
-            <h4>Verifiable Credentials</h4>
-            <p>ACDC credentials anchor domain-specific attestations to the KERI trust layer. The <code>TEL</code> (Transaction Event Log) tracks credential issuance, revocation, and lifecycle state.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+				<details class="fw-layer" name="stack">
+					<summary>
+						<span class="scope-tag">04 · KERI · ACDC</span>
+						<h3>Governance</h3>
+						<span class="fw-layer-brief">Key Event Infrastructure · Verifiable Credentials</span>
+						<span class="fw-toggle"><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
+					</summary>
+					<div class="fw-layer-body">
+						<ul class="scope-list">
+							<li class="plain"><h4>Key Event Infrastructure</h4><p>KERI provides the root-of-trust: self-certifying identifiers with pre-rotation, witnessed key events (<code>icp</code>, <code>rot</code>, <code>ixn</code>, <code>dip</code>, <code>drt</code>), and delegated authority chains.</p></li>
+							<li class="plain"><h4>Verifiable Credentials</h4><p>ACDC credentials anchor domain-specific attestations to the KERI trust layer. The <code>TEL</code> (Transaction Event Log) tracks credential issuance, revocation, and lifecycle state.</p></li>
+						</ul>
+					</div>
+				</details>
 
-    <div class="stack-layer reveal" onclick="toggleStack(this)">
-      <div class="stack-header">
-        <span class="stack-num">05</span>
-        <span class="stack-label">Policy Stacks</span>
-        <span class="stack-tag">RULES</span>
-        <span class="stack-expand">+</span>
-      </div>
-      <div class="stack-detail">
-        <div class="stack-detail-inner">
-          <div class="detail-card">
-            <h4>Technical & Financial Policies</h4>
-            <p>Machine-readable rules governing protocol behaviour, transaction limits, settlement windows, and compliance boundaries. Enforced at the infrastructure layer.</p>
-          </div>
-          <div class="detail-card">
-            <h4>Human & Agent Policies</h4>
-            <p>Rules of conduct for human actors and AI agents. The Human Conductor model ensures humans set policy while agents operate within scoped, time-limited, KERI-delegated authority.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+				<details class="fw-layer" name="stack">
+					<summary>
+						<span class="scope-tag">05 · Rules</span>
+						<h3>Policy stacks</h3>
+						<span class="fw-layer-brief">Technical &amp; Financial Policies · Human &amp; Agent Policies</span>
+						<span class="fw-toggle"><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
+					</summary>
+					<div class="fw-layer-body">
+						<ul class="scope-list">
+							<li class="plain"><h4>Technical &amp; Financial Policies</h4><p>Machine-readable rules governing protocol behaviour, transaction limits, settlement windows, and compliance boundaries. Enforced at the infrastructure layer.</p></li>
+							<li class="plain"><h4>Human &amp; Agent Policies</h4><p>Rules of conduct for human actors and AI agents. The Human Conductor model ensures humans set policy while agents operate within scoped, time-limited, KERI-delegated authority.</p></li>
+						</ul>
+					</div>
+				</details>
+			</div>
+		</section>
 
-  </div>
-</section>
+		<!-- ═══ Lifecycle ═══ -->
+		<section class="scope hub" id="lifecycle" aria-labelledby="lifecycle-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Relationship lifecycle</p><h2 id="lifecycle-title">From discovery to enduring <em>use</em><span>.</span></h2></div>
+				<p class="section-note">Digital relationships progress through distinct phases — each with different trust requirements, governance needs, and risk profiles. Ephemeral or enduring, every relationship has a lifecycle.</p>
+			</div>
+			<ol class="fw-track">
+				<li><span class="fw-track-dot" aria-hidden="true">D</span><strong>Discovering</strong><small>Finding &amp; evaluating potential relationships</small></li>
+				<li><span class="fw-track-dot" aria-hidden="true">C</span><strong>Co-Creating</strong><small>Building shared context &amp; establishing terms</small></li>
+				<li><span class="fw-track-dot" aria-hidden="true">R</span><strong>Relationship</strong><small>Active trust with mutual obligations</small></li>
+				<li><span class="fw-track-dot" aria-hidden="true">P</span><strong>Propagated</strong><small>Trust extended to wider network &amp; tiers</small></li>
+				<li><span class="fw-track-dot" aria-hidden="true">U</span><strong>Used</strong><small>Ongoing operation, updating &amp; deranging</small></li>
+			</ol>
+		</section>
 
-<!-- ── Relationship Lifecycle ── -->
-<section id="lifecycle">
-  <div class="section-eyebrow reveal">Relationship Lifecycle</div>
-  <h2 class="section-title reveal">From Discovery to Enduring Use</h2>
-  <p class="section-desc reveal">Digital relationships progress through distinct phases — each with different trust requirements, governance needs, and risk profiles. Ephemeral or enduring, every relationship has a lifecycle.</p>
+		<!-- ═══ Network (dark panel) ═══ -->
+		<section class="layers" id="network" aria-labelledby="network-title">
+			<div class="layers-head">
+				<div><p class="eyebrow">Relationship network</p><h2 id="network-title">Networks of agent selves<span>.</span></h2></div>
+				<p>Autonomous identifiers form dynamic trust networks. Each node holds its own KERI AID, with Tier 1 direct relationships and Tier 2 shared attestations propagating trust across the graph.</p>
+			</div>
+			<canvas class="fw-canvas" id="networkCanvas" role="img" aria-label="Network diagram: your primary AID at the centre, five direct relationships around it, shared-attestation relationships beyond them, and delegated teammates at the edge."></canvas>
+			<ul class="fw-legend">
+				<li><span class="fw-swatch you"></span>Primary AID (You)</li>
+				<li><span class="fw-swatch tier1"></span>Tier 1 — Direct Relationship</li>
+				<li><span class="fw-swatch tier2"></span>Tier 2 — Shared Attestation</li>
+				<li><span class="fw-swatch team"></span>Teammate / Delegated</li>
+			</ul>
+		</section>
 
-  <div class="lifecycle-track reveal">
-    <div class="lifecycle-node">
-      <div class="lifecycle-dot">D</div>
-      <div class="lifecycle-label">Discovering</div>
-      <div class="lifecycle-sub">Finding & evaluating potential relationships</div>
-    </div>
-    <div class="lifecycle-arrow"></div>
-    <div class="lifecycle-node">
-      <div class="lifecycle-dot">C</div>
-      <div class="lifecycle-label">Co-Creating</div>
-      <div class="lifecycle-sub">Building shared context & establishing terms</div>
-    </div>
-    <div class="lifecycle-arrow"></div>
-    <div class="lifecycle-node">
-      <div class="lifecycle-dot">R</div>
-      <div class="lifecycle-label">Relationship</div>
-      <div class="lifecycle-sub">Active trust with mutual obligations</div>
-    </div>
-    <div class="lifecycle-arrow"></div>
-    <div class="lifecycle-node">
-      <div class="lifecycle-dot">P</div>
-      <div class="lifecycle-label">Propagated</div>
-      <div class="lifecycle-sub">Trust extended to wider network & tiers</div>
-    </div>
-    <div class="lifecycle-arrow"></div>
-    <div class="lifecycle-node">
-      <div class="lifecycle-dot">U</div>
-      <div class="lifecycle-label">Used</div>
-      <div class="lifecycle-sub">Ongoing operation, updating & deranging</div>
-    </div>
-  </div>
-</section>
+		<!-- ═══ Policy ═══ -->
+		<section class="scope hub" id="policy" aria-labelledby="policy-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Policy architecture</p><h2 id="policy-title">Policy <em>stacks</em><span>.</span></h2></div>
+				<p class="section-note">Four policy domains govern every digital relationship — from machine-enforced technical rules to human-authored codes of conduct and AI agent operating boundaries.</p>
+			</div>
+			<ul class="scope-list four">
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg><h4>Technical</h4><p>Protocol standards, encryption requirements, identity infrastructure rules, and architectural decision records.</p>
+					<ul class="roles"><li>AuthN</li><li>Access Control</li><li>Encryption</li><li>Standards</li><li>ADRs</li></ul></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><h4>Financial</h4><p>Transaction limits, settlement rules, compliance boundaries, and regulatory mapping across jurisdictions.</p>
+					<ul class="roles"><li>Provisioning</li><li>Lifecycle</li><li>Compliance</li><li>Reporting</li></ul></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><h4>Human</h4><p>Rules of conduct, ethical guidelines, privacy-by-design principles, and governance participation frameworks.</p>
+					<ul class="roles"><li>Privacy</li><li>Consent</li><li>Conduct</li><li>Ethics</li></ul></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg><h4>Agent</h4><p>AI agent operating boundaries, delegation scopes, time-limited authority, and the Human Conductor oversight model.</p>
+					<ul class="roles"><li>Delegation</li><li>Scoped Authority</li><li>Audit</li><li>Conductor</li></ul></li>
+			</ul>
+		</section>
 
-<!-- ── Relationship Network ── -->
-<div class="network-section" id="network">
-  <div class="network-inner">
-    <div class="section-eyebrow reveal">Relationship Network</div>
-    <h2 class="section-title reveal">Networks of Agent Selves</h2>
-    <p class="section-desc reveal">Autonomous identifiers form dynamic trust networks. Each node holds its own KERI AID, with Tier 1 direct relationships and Tier 2 shared attestations propagating trust across the graph.</p>
+		<!-- ═══ Governance ═══ -->
+		<section class="scope hub" id="governance" aria-labelledby="governance-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Governance capabilities</p><h2 id="governance-title">What gets <em>governed</em><span>.</span></h2></div>
+				<p class="section-note">The framework identifies core governance domains — each maps to concrete infrastructure capabilities and policy enforcement points.</p>
+			</div>
+			<ul class="scope-list three">
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="scope-num">KERI AID · FIDO2</span><h4>Identity &amp; AuthN</h4><p>Self-certifying identifiers, passkey-based authentication, and KERI key event management.</p></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="scope-num">ACDC · ZKP</span><h4>Security &amp; Privacy</h4><p>Encryption-by-default, selective disclosure, privacy-preserving proofs, and access control policies.</p></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/></svg><span class="scope-num">TEL · vLEI</span><h4>Provisioning</h4><p>Credential issuance, service activation, resource allocation, and onboarding workflows.</p></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="scope-num">dip · ixn</span><h4>Relationship &amp; Access</h4><p>Trust establishment, delegation chains, mutual attestation, and tiered access control.</p></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg><span class="scope-num">rot · TEL</span><h4>Lifecycle</h4><p>Credential rotation, revocation, renewal, and the balance between ephemeral and enduring relationships.</p></li>
+				<li class="plain"><svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></svg><span class="scope-num">ADR · RFC</span><h4>Architecture Decisions</h4><p>ADRs, standards selection, protocol choices, and infrastructure governance — the meta-governance layer.</p></li>
+			</ul>
+		</section>
 
-    <div class="network-canvas-wrap reveal">
-      <canvas id="networkCanvas"></canvas>
-    </div>
+		<!-- ═══ Risk ═══ -->
+		<section class="scope hub" id="risk" aria-labelledby="risk-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">Risk calibration</p><h2 id="risk-title">Balance risk vs <em>reward</em><span>.</span></h2></div>
+				<p class="section-note">Every digital relationship calibrates between security friction and interaction fluidity. Drag the slider to explore how the trust stack adapts.</p>
+			</div>
+			<div class="model">
+				<div class="model-in">
+					<div class="sim-field">
+						<label for="riskSlider">Security ↔ fluidity</label>
+						<div class="fw-ends"><span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>High Security</span><span>High Fluidity<svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span></div>
+						<input class="range" type="range" id="riskSlider" min="0" max="100" value="50" aria-describedby="riskDesc" />
+						<div class="fw-ends mono"><span>Multi-sig · Full KYC</span><span>Single passkey · Ephemeral</span></div>
+					</div>
+				</div>
+				<div class="sim-out model-out" aria-live="polite">
+					<p class="eyebrow">Trust stack</p>
+					<p class="verdict" id="riskVal">50</p>
+					<p class="verdict-why" id="riskDesc">Balanced — Standard KERI auth with witnessed key events</p>
+				</div>
+			</div>
+		</section>
 
-    <div class="network-legend reveal">
-      <div class="legend-item">
-        <div class="legend-dot" style="background: var(--accent);"></div>
-        <span>Primary AID (You)</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background: #286647;"></div>
-        <span>Tier 1 — Direct Relationship</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background: #4a7fb5;"></div>
-        <span>Tier 2 — Shared Attestation</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background: #8d8690; opacity: 0.5;"></div>
-        <span>Teammate / Delegated</span>
-      </div>
-    </div>
-  </div>
-</div>
+		<section class="custom-banner" id="contact">
+			<div><p class="eyebrow">Work with us</p><h2>Trustable identity.<br>For your community.</h2></div>
+			<div class="banner-copy"><p>Questions about identity, trust, the frameworks, or the research behind them — get in touch.</p><a class="button light" href="https://selfdriven.foundation/contact" target="_blank" rel="noopener">selfdriven.foundation/contact <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+		</section>
+	</main>
 
-<!-- ── Policy Stacks ── -->
-<section id="policy">
-  <div class="section-eyebrow reveal">Policy Architecture</div>
-  <h2 class="section-title reveal">Policy Stacks</h2>
-  <p class="section-desc reveal">Four policy domains govern every digital relationship — from machine-enforced technical rules to human-authored codes of conduct and AI agent operating boundaries.</p>
-
-  <div class="policy-grid">
-    <div class="policy-card reveal">
-      <div class="policy-icon">⚙️</div>
-      <h3>Technical</h3>
-      <p>Protocol standards, encryption requirements, identity infrastructure rules, and architectural decision records.</p>
-      <div class="policy-items">
-        <span class="policy-tag">AuthN</span>
-        <span class="policy-tag">Access Control</span>
-        <span class="policy-tag">Encryption</span>
-        <span class="policy-tag">Standards</span>
-        <span class="policy-tag">ADRs</span>
-      </div>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-icon">💰</div>
-      <h3>Financial</h3>
-      <p>Transaction limits, settlement rules, compliance boundaries, and regulatory mapping across jurisdictions.</p>
-      <div class="policy-items">
-        <span class="policy-tag">Provisioning</span>
-        <span class="policy-tag">Lifecycle</span>
-        <span class="policy-tag">Compliance</span>
-        <span class="policy-tag">Reporting</span>
-      </div>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-icon">👤</div>
-      <h3>Human</h3>
-      <p>Rules of conduct, ethical guidelines, privacy-by-design principles, and governance participation frameworks.</p>
-      <div class="policy-items">
-        <span class="policy-tag">Privacy</span>
-        <span class="policy-tag">Consent</span>
-        <span class="policy-tag">Conduct</span>
-        <span class="policy-tag">Ethics</span>
-      </div>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-icon">🤖</div>
-      <h3>Agent</h3>
-      <p>AI agent operating boundaries, delegation scopes, time-limited authority, and the Human Conductor oversight model.</p>
-      <div class="policy-items">
-        <span class="policy-tag">Delegation</span>
-        <span class="policy-tag">Scoped Authority</span>
-        <span class="policy-tag">Audit</span>
-        <span class="policy-tag">Conductor</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Governance Capabilities ── -->
-<section id="governance">
-  <div class="section-eyebrow reveal">Governance Capabilities</div>
-  <h2 class="section-title reveal">What Gets Governed</h2>
-  <p class="section-desc reveal">The framework identifies core governance domains — each maps to concrete infrastructure capabilities and policy enforcement points.</p>
-
-  <div class="gov-grid">
-    <div class="gov-card reveal">
-      <div class="gov-icon">🔐</div>
-      <h4>Identity & AuthN</h4>
-      <p>Self-certifying identifiers, passkey-based authentication, and KERI key event management.</p>
-      <span class="gov-tech">KERI AID · FIDO2</span>
-    </div>
-    <div class="gov-card reveal">
-      <div class="gov-icon">🛡️</div>
-      <h4>Security & Privacy</h4>
-      <p>Encryption-by-default, selective disclosure, privacy-preserving proofs, and access control policies.</p>
-      <span class="gov-tech">ACDC · ZKP</span>
-    </div>
-    <div class="gov-card reveal">
-      <div class="gov-icon">📦</div>
-      <h4>Provisioning</h4>
-      <p>Credential issuance, service activation, resource allocation, and onboarding workflows.</p>
-      <span class="gov-tech">TEL · vLEI</span>
-    </div>
-    <div class="gov-card reveal">
-      <div class="gov-icon">🔗</div>
-      <h4>Relationship & Access</h4>
-      <p>Trust establishment, delegation chains, mutual attestation, and tiered access control.</p>
-      <span class="gov-tech">dip · ixn</span>
-    </div>
-    <div class="gov-card reveal">
-      <div class="gov-icon">🔄</div>
-      <h4>Lifecycle</h4>
-      <p>Credential rotation, revocation, renewal, and the balance between ephemeral and enduring relationships.</p>
-      <span class="gov-tech">rot · TEL</span>
-    </div>
-    <div class="gov-card reveal">
-      <div class="gov-icon">📐</div>
-      <h4>Architecture Decisions</h4>
-      <p>ADRs, standards selection, protocol choices, and infrastructure governance — the meta-governance layer.</p>
-      <span class="gov-tech">ADR · RFC</span>
-    </div>
-  </div>
-</section>
-
-<!-- ── Risk Balance ── -->
-<section id="risk">
-  <div class="section-eyebrow reveal">Risk Calibration</div>
-  <h2 class="section-title reveal">Balance Risk vs Reward</h2>
-  <p class="section-desc reveal">Every digital relationship calibrates between security friction and interaction fluidity. Drag the slider to explore how the trust stack adapts.</p>
-
-  <div class="risk-balance reveal">
-    <div class="risk-slider-wrap">
-      <div class="risk-slider-label">
-        <span>🛡️ High Security</span>
-        <span>⚡ High Fluidity</span>
-      </div>
-      <input type="range" class="risk-slider" id="riskSlider" min="0" max="100" value="50" oninput="updateRisk(this.value)">
-      <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-        <span style="font-size: 11px; color: var(--muted); font-family: ui-monospace;">Multi-sig · Full KYC</span>
-        <span style="font-size: 11px; color: var(--muted); font-family: ui-monospace;">Single passkey · Ephemeral</span>
-      </div>
-    </div>
-    <div class="risk-output">
-      <div class="risk-val" id="riskVal">50</div>
-      <div class="risk-desc" id="riskDesc">Balanced — Standard KERI auth with witnessed key events</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Footer ── -->
-<footer>
-  <p><span class="footer-brand">selfdriven</span>.foundation — Digital Relationship Trust Framework</p>
-  <ul class="footer-links">
-    <li><a href="#">selfdriven.money</a></li>
-    <li><a href="#">selfdriven.pro</a></li>
-    <li><a href="#">selfdriven.network</a></li>
-    <li><a href="#">selfdriven.ai</a></li>
-    <li><a href="#">selfdriven.bot</a></li>
-  </ul>
+<footer class="footer">
+	<div class="footer-left">
+		<div class="nav-brand">selfdriven<span>.id</span></div>
+		<p>Helping communities self-actuate on trustable identification and associated identities. For all entity-substrates, organic and inorganic.</p>
+	</div>
+	<div class="footer-cols">
+		<div>
+			<p class="footer-head">Identity</p>
+			<a href="/ssi/">SSI methods</a>
+			<a href="/ssi/keri/">SSI &amp; KERI</a>
+			<a href="/ssi/keri/authz">KERI &amp; AuthZ</a>
+			<a href="/vlei">vLEI</a>
+			<a href="https://selfdriven.fyi/identity" target="_blank" rel="noopener">selfdriven.fyi/identity</a>
+			<a href="https://selfdriven.fyi/trust" target="_blank" rel="noopener">selfdriven.fyi/trust</a>
+		</div>
+		<div>
+			<p class="footer-head">Research</p>
+			<a href="/research/id-primitives-for-human-rooted-agency">Human-rooted agency</a>
+			<a href="/framework/digital-interaction">Digital Interaction Framework</a>
+			<a href="/framework/digital-relationship-trust">Digital Relationship Trust Framework</a>
+		</div>
+		<div>
+			<p class="footer-head">selfdriven</p>
+			<a href="https://selfdriven.foundation" target="_blank" rel="noopener">Foundation</a>
+			<a href="https://selfdriven.network" target="_blank" rel="noopener">Network</a>
+			<a href="https://selfdriven.tech" target="_blank" rel="noopener">Tech</a>
+			<a href="https://selfdriven.ai" target="_blank" rel="noopener">AI</a>
+			<a href="https://selfdriven.money" target="_blank" rel="noopener">Money</a>
+			<a href="https://selfdriven.pro" target="_blank" rel="noopener">Pro</a>
+			<a href="https://selfdriven.bot" target="_blank" rel="noopener">Bot</a>
+		</div>
+	</div>
+	<div class="footer-line">Without a shared identification system, you can't have shareable identity. Without shareable identities, you can't have shared trust.</div>
 </footer>
 
 <script>
-// ── Nav Scroll ──
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
-});
-
-// ── Stack Toggle ──
-function toggleStack(el) {
-  const wasActive = el.classList.contains('active');
-  document.querySelectorAll('.stack-layer').forEach(l => l.classList.remove('active'));
-  if (!wasActive) el.classList.add('active');
+{
+	const slider = document.getElementById('riskSlider');
+	const val = document.getElementById('riskVal'), desc = document.getElementById('riskDesc');
+	const update = () => {
+		const v = Number(slider.value);
+		val.textContent = v;
+		if (v < 20) desc.textContent = 'Maximum — Multi-sig, full KYC, witnessed delegation, TEL audit';
+		else if (v < 40) desc.textContent = 'High — Passkey + KERI with 3-of-3 witness threshold';
+		else if (v < 60) desc.textContent = 'Balanced — Standard KERI auth with witnessed key events';
+		else if (v < 80) desc.textContent = 'Fluid — Single passkey, lightweight attestation, 1-of-3 witnesses';
+		else desc.textContent = 'Ephemeral — Temporary AID, no witness requirement, session-scoped';
+	};
+	slider.addEventListener('input', update);
+	update();
 }
+{
+	// Network of agent selves: you, Tier 1 direct relationships, Tier 2 shared attestations, delegated teammates
+	const canvas = document.getElementById('networkCanvas');
+	if (canvas && canvas.getContext) {
+		const ctx = canvas.getContext('2d');
+		const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const C = { you: '#f0805c', t1: '#286647', t2: '#b8a8f0', team: '#8d8690' };
+		const nodes = [
+			{ x: .50, y: .45, r: 22, c: C.you, label: 'You', tier: 0 },
+			{ x: .28, y: .30, r: 14, c: C.t1, label: 'R', tier: 1 },
+			{ x: .72, y: .25, r: 14, c: C.t1, label: 'R', tier: 1 },
+			{ x: .35, y: .70, r: 14, c: C.t1, label: 'R', tier: 1 },
+			{ x: .68, y: .65, r: 14, c: C.t1, label: 'R', tier: 1 },
+			{ x: .15, y: .55, r: 14, c: C.t1, label: 'R', tier: 1 },
+			{ x: .12, y: .18, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .40, y: .14, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .85, y: .38, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .88, y: .70, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .22, y: .85, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .55, y: .82, r: 10, c: C.t2, label: 'R', tier: 2 },
+			{ x: .05, y: .40, r: 7, c: C.team, label: '', tier: 3 },
+			{ x: .92, y: .20, r: 7, c: C.team, label: '', tier: 3 },
+			{ x: .78, y: .85, r: 7, c: C.team, label: '', tier: 3 }
+		];
+		const edges = [[0,1],[0,2],[0,3],[0,4],[0,5],[1,6],[1,7],[2,7],[2,8],[3,10],[4,9],[4,11],[5,12],[6,12],[8,13],[9,14],[3,5],[1,3]];
+		let w = 0, h = 0, time = 0, mouse = { x: -100, y: -100 };
 
-// ── Risk Slider ──
-function updateRisk(val) {
-  document.getElementById('riskVal').textContent = val;
-  const desc = document.getElementById('riskDesc');
-  if (val < 20) desc.textContent = 'Maximum — Multi-sig, full KYC, witnessed delegation, TEL audit';
-  else if (val < 40) desc.textContent = 'High — Passkey + KERI with 3-of-3 witness threshold';
-  else if (val < 60) desc.textContent = 'Balanced — Standard KERI auth with witnessed key events';
-  else if (val < 80) desc.textContent = 'Fluid — Single passkey, lightweight attestation, 1-of-3 witnesses';
-  else desc.textContent = 'Ephemeral — Temporary AID, no witness requirement, session-scoped';
+		const draw = () => {
+			ctx.clearRect(0, 0, w, h);
+			edges.forEach(([a, b]) => {
+				const ax = nodes[a].x * w, ay = nodes[a].y * h, bx = nodes[b].x * w, by = nodes[b].y * h;
+				ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+				ctx.strokeStyle = 'rgba(240,128,92,.2)'; ctx.lineWidth = 1; ctx.stroke();
+				if (!still) {
+					const t = (Math.sin(time * 2 + a + b) + 1) / 2;
+					ctx.beginPath(); ctx.arc(ax + (bx - ax) * t, ay + (by - ay) * t, 2.5, 0, Math.PI * 2);
+					ctx.fillStyle = 'rgba(240,128,92,.55)'; ctx.fill();
+				}
+			});
+			nodes.forEach((n, i) => {
+				const nx = n.x * w, ny = n.y * h + (still ? 0 : Math.sin(time * 1.5 + i) * 3);
+				const hover = Math.hypot(mouse.x - nx, mouse.y - ny) < 40;
+				if (hover || n.tier === 0) {
+					const g = ctx.createRadialGradient(nx, ny, n.r, nx, ny, n.r + 10);
+					g.addColorStop(0, n.c + '40'); g.addColorStop(1, n.c + '00');
+					ctx.beginPath(); ctx.arc(nx, ny, n.r + 10, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+				}
+				ctx.beginPath(); ctx.arc(nx, ny, n.r, 0, Math.PI * 2);
+				ctx.fillStyle = n.c + (n.tier === 3 ? '60' : 'cc'); ctx.fill();
+				ctx.strokeStyle = n.c; ctx.lineWidth = hover ? 2.5 : 1.5; ctx.stroke();
+				if (n.label) {
+					ctx.fillStyle = n.tier === 2 ? '#24202a' : '#ffffff';
+					ctx.font = (n.tier === 0 ? '600 11px' : '10px') + " ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace";
+					ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+					ctx.fillText(n.label, nx, ny);
+				}
+			});
+		};
+		const resize = () => {
+			const dpr = window.devicePixelRatio || 1, rect = canvas.getBoundingClientRect();
+			w = rect.width; h = rect.height;
+			canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			draw();
+		};
+		canvas.addEventListener('mousemove', e => {
+			const r = canvas.getBoundingClientRect();
+			mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+			if (still) draw();
+		});
+		canvas.addEventListener('mouseleave', () => { mouse = { x: -100, y: -100 }; if (still) draw(); });
+		window.addEventListener('resize', resize);
+		resize();
+		if (!still) {
+			const loop = () => { time += .005; draw(); requestAnimationFrame(loop); };
+			requestAnimationFrame(loop);
+		}
+	}
 }
-
-// ── Scroll Reveals ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      entry.target.style.transitionDelay = `${i * 0.08}s`;
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ── Network Canvas ──
-function initNetwork() {
-  const canvas = document.getElementById('networkCanvas');
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#de5a31';
-
-  const nodes = [
-    { x: 0.5, y: 0.45, r: 22, color: accent, label: 'You', tier: 0 },
-    { x: 0.28, y: 0.3, r: 14, color: '#286647', label: 'R', tier: 1 },
-    { x: 0.72, y: 0.25, r: 14, color: '#286647', label: 'R', tier: 1 },
-    { x: 0.35, y: 0.7, r: 14, color: '#286647', label: 'R', tier: 1 },
-    { x: 0.68, y: 0.65, r: 14, color: '#286647', label: 'R', tier: 1 },
-    { x: 0.15, y: 0.55, r: 14, color: '#286647', label: 'R', tier: 1 },
-    { x: 0.12, y: 0.18, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.4, y: 0.14, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.85, y: 0.38, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.88, y: 0.7, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.22, y: 0.85, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.55, y: 0.82, r: 10, color: '#4a7fb5', label: 'R', tier: 2 },
-    { x: 0.05, y: 0.4, r: 7, color: '#8d8690', label: '', tier: 3 },
-    { x: 0.92, y: 0.2, r: 7, color: '#8d8690', label: '', tier: 3 },
-    { x: 0.78, y: 0.85, r: 7, color: '#8d8690', label: '', tier: 3 },
-  ];
-
-  const edges = [
-    [0,1],[0,2],[0,3],[0,4],[0,5],
-    [1,6],[1,7],[2,7],[2,8],[3,10],[4,9],[4,11],[5,12],
-    [6,12],[8,13],[9,14],[3,5],[1,3],
-  ];
-
-  let time = 0;
-  let mouse = { x: -100, y: -100 };
-
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  function draw() {
-    const w = canvas.width / dpr;
-    const h = canvas.height / dpr;
-    ctx.clearRect(0, 0, w, h);
-    time += 0.005;
-
-    // Draw edges
-    edges.forEach(([a, b]) => {
-      const na = nodes[a], nb = nodes[b];
-      const ax = na.x * w, ay = na.y * h;
-      const bx = nb.x * w, by = nb.y * h;
-      ctx.beginPath();
-      ctx.moveTo(ax, ay);
-      ctx.lineTo(bx, by);
-      ctx.strokeStyle = 'rgba(222,90,49,0.12)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      // Animated packet
-      const t = (Math.sin(time * 2 + a + b) + 1) / 2;
-      const px = ax + (bx - ax) * t;
-      const py = ay + (by - ay) * t;
-      ctx.beginPath();
-      ctx.arc(px, py, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(222,90,49,0.3)';
-      ctx.fill();
-    });
-
-    // Draw nodes
-    nodes.forEach((n, i) => {
-      const nx = n.x * w;
-      const ny = n.y * h;
-      const wobble = Math.sin(time * 1.5 + i) * 3;
-
-      const dx = mouse.x - nx;
-      const dy = mouse.y - ny;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      const hover = dist < 40;
-
-      // Glow
-      if (hover || n.tier === 0) {
-        ctx.beginPath();
-        ctx.arc(nx, ny + wobble, n.r + 10, 0, Math.PI * 2);
-        const grad = ctx.createRadialGradient(nx, ny + wobble, n.r, nx, ny + wobble, n.r + 10);
-        grad.addColorStop(0, n.color + '40');
-        grad.addColorStop(1, n.color + '00');
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      // Circle
-      ctx.beginPath();
-      ctx.arc(nx, ny + wobble, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = n.color + (n.tier === 3 ? '60' : 'cc');
-      ctx.fill();
-      ctx.strokeStyle = n.color;
-      ctx.lineWidth = hover ? 2.5 : 1.5;
-      ctx.stroke();
-
-      // Label
-      if (n.label) {
-        ctx.fillStyle = '#fff';
-        ctx.font = `${n.tier === 0 ? 'bold 11px' : '10px'} ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(n.label, nx, ny + wobble);
-      }
-    });
-
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
-
-// Init when visible
-const netObs = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    initNetwork();
-    netObs.disconnect();
-  }
-}, { threshold: 0.1 });
-netObs.observe(document.getElementById('networkCanvas'));
 </script>
-
 </body>
 </html>
