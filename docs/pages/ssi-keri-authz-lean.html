@@ -108,6 +108,157 @@ permalink: /ssi/keri/authz/lean
 			</div>
 		</section>
 
+		<section class="scope hub" id="overview" aria-labelledby="overview-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">At a glance</p><h2 id="overview-title">Deterministic AuthZ, formally <em>proved</em><span>.</span></h2></div>
+				<p class="section-note">Four layers of trust, one six-input decision function, nine formal guarantees — and how verifiable AuthZ with Lean differs from traditional AuthN/AuthZ.</p>
+			</div>
+
+			<div class="ov">
+				<div class="ov-block">
+					<p class="ov-label">The four layers of trust</p>
+					<div class="discipline-grid">
+						<article class="discipline">
+							<div class="discipline-art tile-dark">
+								<svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A key anchoring a chain of key events and a credential, ending in a verified check">
+									<text class="svg-title" x="0" y="34" fill="#ffffff">Control</text>
+									<text class="svg-label" x="0" y="60" fill="#ffffff" opacity=".6">CRYPTOGRAPHIC · KERI + ACDC</text>
+									<circle cx="20" cy="136" r="13" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+									<path d="M33,136H80 M66,136v11 M76,136v8" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+									<path d="M80,136H112 M128,136H148 M164,136H184 M200,136H222" stroke="#ffffff" stroke-width="2.5" opacity=".9"/>
+									<circle cx="120" cy="136" r="8" fill="#ffffff"/>
+									<circle cx="156" cy="136" r="8" fill="#ffffff"/>
+									<circle cx="192" cy="136" r="8" fill="#ffffff"/>
+									<rect x="222" y="106" width="50" height="60" rx="4" fill="#ffffff" opacity=".92"/>
+									<path d="M232,122h30 M232,134h22 M232,146h26" stroke="#27232e" stroke-width="3" stroke-linecap="round"/>
+									<path d="M272,136H308" stroke="#ffffff" stroke-width="2.5"/>
+									<circle cx="330" cy="136" r="22" style="fill:var(--orange)"/>
+									<path d="M320,136 l7,7 l13,-14" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+									<text class="svg-tick" x="0" y="214" fill="#ffffff">Key</text>
+									<text class="svg-tick" x="156" y="214" fill="#ffffff" text-anchor="middle">KEL</text>
+									<text class="svg-tick" x="360" y="214" fill="#ffffff" text-anchor="end">ACDC</text>
+								</svg>
+							</div>
+							<h3>Cryptographic layer</h3>
+							<p>KERI and ACDC establish identity control and portable authority.</p>
+							<ul class="roles"><li>KERI</li><li>ACDC</li><li>KEL</li></ul>
+						</article>
+						<article class="discipline">
+							<div class="discipline-art tile-green">
+								<svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A context graph feeding premises into a proof, ending in a verified check">
+									<text class="svg-title" x="0" y="34" fill="#ffffff">Reason</text>
+									<text class="svg-label" x="0" y="60" fill="#ffffff" opacity=".6">CONTEXTUAL &amp; LOGICAL · VCG + LEAN</text>
+									<path d="M18,104 L70,96 M18,104 L30,166 M70,96 L96,140 M30,166 L96,140" stroke="#ffffff" stroke-width="2.5" opacity=".9"/>
+									<path d="M18,104 L96,140" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 4" opacity=".6"/>
+									<circle cx="18" cy="104" r="8" fill="#ffffff"/>
+									<circle cx="70" cy="96" r="8" fill="#ffffff"/>
+									<circle cx="30" cy="166" r="8" fill="#ffffff"/>
+									<circle cx="96" cy="140" r="8" fill="#ffffff"/>
+									<path d="M104,138 L150,108 M104,140 L190,108 M104,142 L230,108" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 5" opacity=".6"/>
+									<circle cx="150" cy="104" r="6" fill="#ffffff"/>
+									<circle cx="190" cy="104" r="6" fill="#ffffff"/>
+									<circle cx="230" cy="104" r="6" fill="#ffffff"/>
+									<line x1="136" y1="122" x2="244" y2="122" stroke="#ffffff" stroke-width="2.5"/>
+									<rect x="150" y="134" width="80" height="28" rx="6" fill="none" stroke="#ffffff" stroke-width="2"/>
+									<text x="190" y="153" text-anchor="middle" fill="#ffffff" font-family="ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace" font-size="14">⊢ r</text>
+									<path d="M230,148 L308,140" stroke="#ffffff" stroke-width="2.5"/>
+									<circle cx="330" cy="140" r="22" style="fill:var(--orange)"/>
+									<path d="M320,140 l7,7 l13,-14" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+									<text class="svg-tick" x="0" y="214" fill="#ffffff">Graph</text>
+									<text class="svg-tick" x="190" y="214" fill="#ffffff" text-anchor="middle">Rules</text>
+									<text class="svg-tick" x="360" y="214" fill="#ffffff" text-anchor="end">Proof</text>
+								</svg>
+							</div>
+							<h3>Contextual &amp; logical layers</h3>
+							<p>The Verified Context Graph maps context, while Lean proves the authorisation logic.</p>
+							<ul class="roles"><li>VCG</li><li>Lean</li><li>Theorems</li></ul>
+						</article>
+						<article class="discipline">
+							<div class="discipline-art tile-lilac">
+								<svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Requests converging on a decision point that issues a receipt, ending in a verified check">
+									<text class="svg-title" x="0" y="34" fill="#24202a">Enforce</text>
+									<text class="svg-label" x="0" y="60" fill="#24202a" opacity=".65">OPERATIONAL · AUTHZEN + SENTINEL</text>
+									<path d="M14,100 L88,128 M14,136 L86,136 M14,172 L88,144" stroke="#24202a" stroke-width="2.5"/>
+									<circle cx="10" cy="100" r="5" fill="#24202a"/>
+									<circle cx="10" cy="136" r="5" fill="#24202a"/>
+									<circle cx="10" cy="172" r="5" fill="#24202a"/>
+									<circle cx="112" cy="136" r="24" fill="none" stroke="#24202a" stroke-width="2.5"/>
+									<path d="M102,136 l6,6 l12,-13" fill="none" stroke="#24202a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M136,136H206" stroke="#24202a" stroke-width="2.5"/>
+									<rect x="206" y="108" width="46" height="56" rx="4" fill="none" stroke="#24202a" stroke-width="2.5"/>
+									<path d="M215,124h28 M215,135h20 M215,146h24" stroke="#24202a" stroke-width="2.5" stroke-linecap="round"/>
+									<path d="M252,136H308" stroke="#24202a" stroke-width="2.5"/>
+									<circle cx="330" cy="136" r="22" style="fill:var(--orange)"/>
+									<path d="M320,136 l7,7 l13,-14" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+									<text class="svg-tick" x="0" y="214" fill="#24202a">Request</text>
+									<text class="svg-tick" x="112" y="214" fill="#24202a" text-anchor="middle">Decision</text>
+									<text class="svg-tick" x="360" y="214" fill="#24202a" text-anchor="end">Receipt</text>
+								</svg>
+							</div>
+							<h3>Operational layer</h3>
+							<p>AuthZEN standardises decisions, and entityOS Sentinel enforces them at runtime.</p>
+							<ul class="roles"><li>AuthZEN</li><li>PDP</li><li>Sentinel</li></ul>
+						</article>
+					</div>
+				</div>
+
+				<div class="ov-block ov-panel">
+					<p class="ov-label">Deterministic AuthZ &amp; formal proofs</p>
+					<div class="ov-flow">
+						<ul class="ov-inputs" aria-label="Six inputs">
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Identity<span class="ov-k">I</span></li>
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>Authority<span class="ov-k">A</span></li>
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Resource<span class="ov-k">R</span></li>
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>Context<span class="ov-k">C</span></li>
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8M16 13H8M16 17H8"/></svg>Policy<span class="ov-k">P</span></li>
+							<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Time<span class="ov-k">T</span></li>
+						</ul>
+						<svg class="ov-fan" viewBox="0 0 100 304" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M0,22 C55,22 45,152 100,152 M0,74 C55,74 45,152 100,152 M0,126 C55,126 45,152 100,152 M0,178 C55,178 45,152 100,152 M0,230 C55,230 45,152 100,152 M0,282 C55,282 45,152 100,152"/></svg>
+						<span class="ov-link narrow" aria-hidden="true"></span>
+						<div class="ov-step ov-fn">
+							<p class="ov-formula">AuthZ = f(I,A,R,C,P,T)</p>
+							<h3>Six-input function</h3>
+							<p>Evaluates identity, authority, resource, context, policy and time.</p>
+						</div>
+						<span class="ov-link" aria-hidden="true"></span>
+						<div class="ov-step">
+							<svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+							<h3>Nine formal guarantees</h3>
+							<p>Proves properties such as default deny and revocation across all inputs.</p>
+						</div>
+						<span class="ov-link" aria-hidden="true"></span>
+						<div class="ov-step ov-pca">
+							<p class="ov-formula">PCA</p>
+							<h3>Proof-carrying authorisation</h3>
+							<p>Machine-checkable proofs demonstrate why an action was permitted.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="ov-block">
+					<p class="ov-label">Traditional vs verifiable AuthZ + Lean</p>
+					<div class="shift levels ov-compare">
+						<div class="shift-card from">
+							<p class="shift-label">Traditional AuthN/AuthZ</p>
+							<ul class="ov-rows">
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg><span><small>Root of authority</small><strong>Centralised database / IdP</strong></span></li>
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg><span><small>Logic verification</small><strong>Trusted application code</strong></span></li>
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg><span><small>Decision evaluation</small><strong>Simple role lookup</strong></span></li>
+							</ul>
+						</div>
+						<div class="shift-card to">
+							<p class="shift-label">Verifiable AuthZ + Lean</p>
+							<ul class="ov-rows">
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg><span><small>Root of authority</small><strong>Cryptographic: KERI + ACDC</strong></span></li>
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 7V5a1 1 0 0 0-1-1H6.5a.5.5 0 0 0-.4.8l4.5 6a2 2 0 0 1 0 2.4l-4.5 6a.5.5 0 0 0 .4.8H17a1 1 0 0 0 1-1v-2"/></svg><span><small>Logic verification</small><strong>Formally proven Lean theorems</strong></span></li>
+								<li><svg class="ov-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.5" r="2.5"/><path d="m10.2 6.3-3.9 3.9"/><circle cx="4.5" cy="12" r="2.5"/><path d="M7 12h10"/><circle cx="19.5" cy="12" r="2.5"/><path d="m13.8 17.7 3.9-3.9"/><circle cx="12" cy="19.5" r="2.5"/></svg><span><small>Decision evaluation</small><strong>Graph traversal &amp; mathematical proof</strong></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section class="layers" id="architecture" aria-labelledby="architecture-title">
 			<div class="layers-head">
 				<div><p class="eyebrow">Proposed architecture</p><h2 id="architecture-title">From signed request to verified <span>decision</span>.</h2></div>
@@ -354,6 +505,35 @@ permalink: /ssi/keri/authz/lean
 			<div class="section-heading">
 				<div><p class="eyebrow">References</p><h2 id="references-title">Standards and <em>tools</em><span>.</span></h2></div>
 				<p class="section-note">The AuthZEN Authorization API 1.0 was approved as an OpenID Final Specification in January 2026.</p>
+			</div>
+			<div class="scope-group" id="listen">
+				<div class="scope-head">
+					<span class="scope-tag">Listen</span>
+					<h3>Two audio overviews.</h3>
+					<p>The ideas on this page, in audio — verified authority in place of identity, and verifiable authority for autonomous AI.</p>
+				</div>
+				<ul class="scope-list">
+					<li class="podcast">
+						<p class="podcast-tag">Podcast</p>
+						<p class="podcast-title">Replacing Identity with Mathematically Verified Authority</p>
+						<p class="podcast-note">selfdriven ID Research</p>
+						<audio controls preload="none">
+							<source src="/assets/audio/Replacing_Identity_with_Mathematically_Verified_Authority.m4a" type="audio/mp4">
+							Your browser does not support the audio element.
+						</audio>
+						<a class="podcast-link" href="/assets/audio/Replacing_Identity_with_Mathematically_Verified_Authority.m4a" download>Download the audio (m4a) <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+					</li>
+					<li class="podcast">
+						<p class="podcast-tag">Podcast</p>
+						<p class="podcast-title">Securing Autonomous AI with Verifiable Authority</p>
+						<p class="podcast-note">selfdriven ID Research</p>
+						<audio controls preload="none">
+							<source src="/assets/audio/Securing_Autonomous_AI_with_Verifiable_Authority.m4a" type="audio/mp4">
+							Your browser does not support the audio element.
+						</audio>
+						<a class="podcast-link" href="/assets/audio/Securing_Autonomous_AI_with_Verifiable_Authority.m4a" download>Download the audio (m4a) <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+					</li>
+				</ul>
 			</div>
 			<div class="scope-group">
 				<div class="scope-head">

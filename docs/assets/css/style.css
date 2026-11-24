@@ -803,3 +803,62 @@ button.button{border:0;font:inherit;font-weight:600;cursor:pointer}
 	.fw-adr>summary{padding:16px}
 	.fw-adr-body{padding:0 16px 16px}
 }
+
+/* ═══ selfdriven.id additions · /ssi/keri/authz/lean · overview & podcast ═══ */
+
+/* Overview figure: four layers (tiles), deterministic AuthZ (dark flow), traditional vs verifiable (shift) */
+.ov-block + .ov-block{margin-top:56px}
+.ov-label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 20px}
+.ov-icon{display:block;flex:0 0 auto;width:22px;height:22px}
+
+.ov-panel{background:var(--panel);color:#ffffff;border-radius:12px;padding:44px 50px 50px}
+.ov-panel .ov-label{color:var(--orange-on-dark);margin-bottom:28px}
+.ov-flow{display:grid;grid-template-columns:minmax(150px,190px) 64px minmax(0,1.15fr) 28px minmax(0,1fr) 28px minmax(0,1fr);align-items:center}
+.ov-inputs{list-style:none;padding:0;margin:0;display:grid;grid-template-rows:repeat(6,44px);gap:8px}
+.ov-inputs li{display:flex;align-items:center;gap:10px;height:44px;padding:0 12px;border:1px solid rgba(255,255,255,.16);border-radius:6px;background:rgba(255,255,255,.05);font:600 15px var(--font-display);letter-spacing:-.01em;color:#ffffff}
+.ov-inputs .ov-icon{width:20px;height:20px;color:var(--orange-on-dark)}
+.ov-k{margin-left:auto;font:600 12px var(--font-mono);color:rgba(255,255,255,.5)}
+.ov-fan{display:block;width:64px;height:304px;fill:none;stroke:rgba(255,255,255,.35);stroke-width:1.5}
+.ov-link{display:block;height:2px;background:var(--orange-on-dark)}
+.ov-link.narrow{display:none}
+.ov-step{min-width:0;padding:22px;border:1px solid rgba(255,255,255,.18);border-radius:8px}
+.ov-step h3{color:#ffffff;margin:0 0 8px;font-size:1.2rem;letter-spacing:-.02em}
+.ov-step p{margin:0;font-size:14px;line-height:1.55;color:rgba(255,255,255,.72)}
+.ov-step .ov-icon{width:28px;height:28px;color:var(--orange-on-dark);margin:0 0 14px}
+.ov-step p.ov-formula{margin:0 0 12px;font:600 13px var(--font-mono);color:var(--orange-on-dark);overflow-wrap:anywhere}
+.ov-fn{border:0;background:rgba(255,255,255,.09);padding-right:42px;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%)}
+.ov-pca{background:var(--orange);border-color:var(--orange)}
+.ov-pca h3{color:var(--on-orange)}
+.ov-pca p{color:var(--on-orange);opacity:.85}
+.ov-pca p.ov-formula{color:var(--on-orange);opacity:.7}
+
+.ov-compare .shift-card .shift-label{margin-bottom:6px}
+.ov-rows{list-style:none;padding:0;margin:0}
+.ov-rows li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:16px;align-items:start;padding:16px 0;border-top:1px solid var(--line)}
+.ov-rows li:first-child{border-top:0}
+.ov-rows .ov-icon{color:var(--muted);margin-top:2px}
+.ov-rows small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.ov-rows strong{display:block;font-family:var(--font-display);font-size:1.2rem;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.shift-card.to .ov-rows li{border-color:rgba(255,255,255,.16)}
+.shift-card.to .ov-rows .ov-icon{color:var(--orange-on-dark)}
+.shift-card.to .ov-rows small{color:rgba(255,255,255,.6)}
+.shift-card.to .ov-rows strong{color:#ffffff}
+
+/* Podcast cards: download link under the player */
+.podcast-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:4px}
+.podcast-link .arrow-icon{color:var(--orange)}
+
+@media(max-width:1100px){
+	.ov-flow{display:flex;flex-direction:column;align-items:stretch}
+	.ov-inputs{grid-template-rows:none;grid-template-columns:repeat(3,minmax(0,1fr))}
+	.ov-fan{display:none}
+	.ov-link,.ov-link.narrow{display:block;width:2px;height:28px;align-self:center}
+	.ov-fn{clip-path:none;padding-right:22px}
+}
+@media(max-width:760px){
+	.ov-panel{padding:30px 22px}
+	.ov-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.ov-inputs li{padding:0 10px;font-size:14px}
+	.ov-block + .ov-block{margin-top:44px}
+	.ov-rows strong{font-size:1.1rem}
+}
